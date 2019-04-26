@@ -13,4 +13,5 @@ services:
       - NET_ADMIN
     volumes:
       - ./dnsmasq.conf:/etc/dnsmasq.conf
+      - ./hosts.txt:/etc/hosts.txt
     restart: always
