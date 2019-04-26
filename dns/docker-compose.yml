@@ -1,0 +1,17 @@
+docker run -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN 
+version: '2'
+services:
+  local-dns:
+    image: jpillora/dnsmasq
+    container_name: local-dns
+    ports:
+      - "5380:5380/tcp"
+      - "53:53/udp"
+    environment:
+      - HTTP_USER: $DNS_HTTP_USER
+      - HTTP_PASS: $DNS_HTTP_PASS
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    restart: always
