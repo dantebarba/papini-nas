@@ -4,7 +4,7 @@ services:
     image: jpillora/dnsmasq
     container_name: local-dns
     ports:
-      - "5380:5380/tcp"
+      - "8080:8080/tcp"
       - "53:53/udp"
     environment:
       HTTP_USER: $DNS_HTTP_USER
