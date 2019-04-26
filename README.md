@@ -12,7 +12,7 @@
   
   Run the following for better perfomance on I/O large files.
   
-    echo noop > /sys/block/<device>/queue/scheduler´
+    echo noop > /sys/block/<device>/queue/scheduler
 
  ---
  
