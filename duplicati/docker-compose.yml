@@ -10,5 +10,5 @@ services:
     volumes:
       - $DUPLICATI_HOME:/home
       - ./data:/data
-      
+    
   
