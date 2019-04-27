@@ -1,0 +1,14 @@
+docker run -p 8200:8200 -v /some/path:/some/path duplicati/duplicati
+version: '2'
+
+services:
+  duplicati:
+    image: duplicati/duplicati:latest
+    container_name: duplicati
+    ports:
+      - 8200:8200
+    volumes:
+      - $DUPLICATI_HOME:/home
+      - ./data:/data
+      
+  
