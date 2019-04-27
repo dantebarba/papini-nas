@@ -1,4 +1,3 @@
-docker run -p 8200:8200 -v /some/path:/some/path duplicati/duplicati
 version: '2'
 
 services:
