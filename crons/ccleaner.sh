@@ -1,7 +1,7 @@
 #!/bin/bash
 /usr/bin/apt-get autoremove
+/usr/bin/apt-get --purge autoremove
 /usr/bin/apt-get clean
-/usr/bin/dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs apt-get -y purge
 
 # mem cleaning
 /sbin/sysctl -w vm.drop_caches=3
