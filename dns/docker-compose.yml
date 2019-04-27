@@ -6,6 +6,7 @@ services:
     ports:
       - "8080:8080/tcp"
       - "53:53/udp"
+      - "53:53/tcp"
     environment:
       HTTP_USER: $DNS_HTTP_USER
       HTTP_PASS: $DNS_HTTP_PASS
