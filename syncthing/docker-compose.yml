@@ -1,0 +1,19 @@
+version: '2'
+
+servies:
+  syncthing:
+    image: linuxserver/syncthing
+    container_name: syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Argentina/Buenos_Aires
+      - UMASK_SET=<022>
+    volumes:
+      - ${SYNCTHING_CONFIG}:/config
+      - ${SYNCTHING_HOME}:/data
+    ports:
+      - 8384:8384
+      - 22000:22000
+      - 21027:21027/udp
+    restart: unless-stopped

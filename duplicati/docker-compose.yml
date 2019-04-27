@@ -8,6 +8,6 @@ services:
       - 8200:8200
     volumes:
       - $DUPLICATI_HOME:/home
-      - ./data:/data
+      - $DUPLICATI_CONFIG:/data
     
   
