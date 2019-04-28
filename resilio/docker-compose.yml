@@ -16,3 +16,9 @@ services:
       - 8888:8888
       - 55555:55555
     restart: unless-stopped
+    networks:
+      - main
+
+networks:
+  main:
+    external: true

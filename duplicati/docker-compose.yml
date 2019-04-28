@@ -9,5 +9,9 @@ services:
     volumes:
       - $DUPLICATI_HOME:/home
       - $DUPLICATI_CONFIG:/data
-    
-  
+    networks:
+      - main
+      
+networks:
+  main:
+    external: true
