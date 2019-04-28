@@ -1,0 +1,14 @@
+version: '2'
+
+servies:
+  iperf:
+    container_name: iperf
+    image: networkstatic/iperf3
+    volumes:
+      - $FILEBROWSER_HOME:/srv
+      - $FILEBROWSER_CONFIG/filebrowser.db:/database.db
+      - $FILEBROWSER_CONFIG/filebrowser.json:/.filebrowser.json
+    ports:
+      - 5201:5201/tcp
+      - 5201:5201/udp
+    restart: unless-stopped
