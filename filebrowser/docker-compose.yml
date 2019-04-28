@@ -1,0 +1,18 @@
+version: '2'
+
+servies:
+  filebrowser:
+    container_name: filebrowser
+    image: filebrowser/filebrowser
+    volumes:
+      - $FILEBROWSER_HOME:/srv
+      - $FILEBROWSER_CONFIG/filebrowser.db:/database.db
+      - $FILEBROWSER_CONFIG/filebrowser.json:/.filebrowser.json
+    ports:
+      - 5001:80
+    networks:
+      - main
+
+networks: 
+  main:
+    external: true

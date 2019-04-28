@@ -1,2 +1,4 @@
-192.168.0.23 papini.casa
-192.168.0.1 router.casa
+192.168.0.23 papini.lan
+192.168.0.1 router.lan
+192.168.0.23 resilio.papini.lan
+192.168.0.23 cloud.papini.lan
