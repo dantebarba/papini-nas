@@ -2,3 +2,7 @@
 192.168.0.1 router.lan
 192.168.0.23 resilio.papini.lan
 192.168.0.23 cloud.papini.lan
+192.168.0.23 plex.papini.lan
+192.168.0.23 sonarr.papini.lan
+192.168.0.23 radarr.papini.lan
+

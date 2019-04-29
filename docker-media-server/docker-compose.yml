@@ -25,7 +25,7 @@ services:
       - main
   radarr:
     extends: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-    service: sonarr
+    service: radarr
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
