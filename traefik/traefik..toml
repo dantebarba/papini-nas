@@ -1,12 +1,11 @@
 debug = true
 logLevel = "INFO" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 
-defaultEntryPoints = ["http", "https"]
+defaultEntryPoints = ["http"]
 
 [web]
 # Port for the status/dashboard page
-address = ":8080"
-dashboard = true
+address = ":5001"
 
 
 [entryPoints]
@@ -15,20 +14,8 @@ dashboard = true
         [entryPoints.http.redirect]
         entryPoint = "https"
 
-    [entryPoints.https]
-    address = ":443"
-    [entryPoints.https.tls]
-
 [docker]
 endpoint = "unix:///var/run/docker.sock"
 domain = "papini.lan"
 watch = true
 exposedByDefault = false
-
-[acme]
-email = "dantebarba@gmail.com"
-storage = "acme.json"
-entryPoint = "https"
-onHostRule = true
-[acme.httpChallenge]
-    entryPoint = "http"
