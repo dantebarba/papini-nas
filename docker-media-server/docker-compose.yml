@@ -11,7 +11,7 @@ services:
       - "traefik.basic.frontend.rule=Host:plex.papini.lan"
       - "traefik.basic.port=32400"
       - "traefik.basic.protocol=http"
-    network:
+    networks:
       - main
   sonarr:
     extends: 
@@ -23,7 +23,7 @@ services:
       - "traefik.basic.frontend.rule=Host:sonarr.papini.lan"
       - "traefik.basic.port=8989"
       - "traefik.basic.protocol=http"
-    network:
+    networks:
       - main
   radarr:
     extends: 
@@ -35,7 +35,7 @@ services:
       - "traefik.basic.frontend.rule=Host:radarr.papini.lan"
       - "traefik.basic.port=7878"
       - "traefik.basic.protocol=http"
-    network:
+    networks:
       - main
 
 
