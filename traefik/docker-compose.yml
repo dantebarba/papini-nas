@@ -23,7 +23,6 @@ services:
 
 networks:
   main:
-    external: 
-      name: main
+    external: true
   default:
     driver: bridge
