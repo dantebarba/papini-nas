@@ -9,10 +9,8 @@ address = ":5001"
 
 
 [entryPoints]
-    [entryPoints.http]
-    address = ":80"
-        [entryPoints.http.redirect]
-        entryPoint = "https"
+  [entryPoints.http]
+  address = ":80"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
