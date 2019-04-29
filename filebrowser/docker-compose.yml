@@ -19,6 +19,7 @@ services:
 
 networks: 
   main:
-    external: true
+    external: 
+      name: main
 
 
