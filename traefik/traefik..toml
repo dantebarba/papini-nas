@@ -2,11 +2,7 @@ debug = true
 logLevel = "INFO" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 
 defaultEntryPoints = ["http"]
-
-[web]
-# Port for the status/dashboard page
-address = ":5001"
-
+[api]
 
 [entryPoints]
   [entryPoints.http]

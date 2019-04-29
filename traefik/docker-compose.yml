@@ -7,7 +7,6 @@ services:
     restart: always
     ports:
       - "80:80"
-      - "5001:5001"
     volumes:
       - ./traefik.toml:/traefik.toml
     networks:
