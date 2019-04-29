@@ -1,18 +1,24 @@
 version: '2'
 
-servies:
+services:
   filebrowser:
     container_name: filebrowser
     image: filebrowser/filebrowser
     volumes:
-      - $FILEBROWSER_HOME:/srv
-      - $FILEBROWSER_CONFIG/filebrowser.db:/database.db
-      - $FILEBROWSER_CONFIG/filebrowser.json:/.filebrowser.json
-    ports:
-      - 5001:80
+      - ${FILEBROWSER_HOME}:/srv
+      - ${FILEBROWSER_CONFIG}/database.db:/database.db
+      - ${FILEBROWSER_CONFIG}:/etc/filebrowser
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:cloud.papini.lan"
+      - "traefik.basic.port=80"
+      - "traefik.basic.protocol=http"
     networks:
       - main
 
 networks: 
   main:
     external: true
+
+

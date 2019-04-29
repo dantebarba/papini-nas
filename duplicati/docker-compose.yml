@@ -7,8 +7,8 @@ services:
     ports:
       - 8200:8200
     volumes:
-      - $DUPLICATI_HOME:/home
-      - $DUPLICATI_CONFIG:/data
+      - ${DUPLICATI_HOME}:/home
+      - ${DUPLICATI_CONFIG}:/data
     networks:
       - main
       

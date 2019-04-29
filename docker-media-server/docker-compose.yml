@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  plex:
+    extends: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+    service: plex
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:plex.papini.lan"
+      - "traefik.basic.port=32400"
+      - "traefik.basic.protocol=http"
+    network:
+      - main
+  sonarr:
+    extends: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+    service: sonarr
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:sonarr.papini.lan"
+      - "traefik.basic.port=8989"
+      - "traefik.basic.protocol=http"
+    network:
+      - main
+  radarr:
+    extends: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+    service: sonarr
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:radarr.papini.lan"
+      - "traefik.basic.port=7878"
+      - "traefik.basic.protocol=http"
+    network:
+      - main
+
+
+networks:
+  main:
+    external: true

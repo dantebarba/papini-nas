@@ -9,9 +9,9 @@ services:
       - TZ=America/Argentina/Buenos_Aires
       - UMASK_SET=<022>
     volumes:
-      - $RESILIO_CONFIG:/config
-      - $RESILIO_DOWNLOADS:/downloads
-      - $RESILIO_HOME:/sync
+      - ${RESILIO_CONFIG}:/config
+      - ${RESILIO_DOWNLOADS}:/downloads
+      - ${RESILIO_HOME}:/sync
     ports:
       - 8888:8888
       - 55555:55555
