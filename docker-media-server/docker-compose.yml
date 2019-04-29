@@ -2,8 +2,9 @@ version: '2'
 
 services:
   plex:
-    extends: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-    service: plex
+    extends: 
+      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+      service: plex
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
@@ -13,8 +14,9 @@ services:
     network:
       - main
   sonarr:
-    extends: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-    service: sonarr
+    extends: 
+      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+      service: sonarr
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
@@ -24,8 +26,9 @@ services:
     network:
       - main
   radarr:
-    extends: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-    service: radarr
+    extends: 
+      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+      service: radarr
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
