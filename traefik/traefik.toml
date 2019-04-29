@@ -1,5 +1,5 @@
-debug = true
-logLevel = "INFO" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+#debug = true
+logLevel = "ERROR" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 InsecureSkipVerify = true
 
 defaultEntryPoints = ["http"]
@@ -14,7 +14,7 @@ defaultEntryPoints = ["http"]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "papini.lan"
+domain = "papini.dantebarba.com.ar"
 watch = true
 # This will hide all docker containers that don't have explicitly  
 # set label to "enable"

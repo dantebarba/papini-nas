@@ -11,7 +11,7 @@ services:
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:cloud.papini.lan"
+      - "traefik.basic.frontend.rule=Host:cloud.${DOMAIN_URL}"
       - "traefik.basic.port=80"
       - "traefik.basic.protocol=http"
     networks:

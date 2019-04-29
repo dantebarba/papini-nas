@@ -8,7 +8,7 @@ services:
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:plex.papini.lan"
+      - "traefik.basic.frontend.rule=Host:plex.${DOMAIN_URL}"
       - "traefik.basic.port=32400"
       - "traefik.basic.protocol=http"
     volumes:
@@ -26,7 +26,7 @@ services:
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:sonarr.papini.lan"
+      - "traefik.basic.frontend.rule=Host:sonarr.${DOMAIN_URL}"
       - "traefik.basic.port=8989"
       - "traefik.basic.protocol=http"
     networks:
@@ -38,7 +38,7 @@ services:
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:radarr.papini.lan"
+      - "traefik.basic.frontend.rule=Host:radarr.${DOMAIN_URL}"
       - "traefik.basic.port=7878"
       - "traefik.basic.protocol=http"
     networks:
