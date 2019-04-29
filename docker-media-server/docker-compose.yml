@@ -11,6 +11,12 @@ services:
       - "traefik.basic.frontend.rule=Host:plex.papini.lan"
       - "traefik.basic.port=32400"
       - "traefik.basic.protocol=http"
+    volumes:
+      - "${STORAGE_LOCATION}/plex:/config"
+      - "${STORAGE_LOCATION}/sonarr/tvseries:/tv"
+      - "${STORAGE_LOCATION}/radarr/movies:/movies"
+      - "${STORAGE_LOCATION}/plex:/transcode"
+      - "${FILEBROWSER_HOME}:/home"
     networks:
       - main
   sonarr:
