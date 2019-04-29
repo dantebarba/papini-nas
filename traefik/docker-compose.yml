@@ -8,13 +8,17 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "5050:5050"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
       - ${TRAEFIK_CONFIG}/acme.json:/acme.json
     networks:
       - main
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8080"
+      - "traefik.frontend.rule=Host:traefik.papini.lan"
+      - "traefik.docker.network=main"
 
 networks:
   main:
