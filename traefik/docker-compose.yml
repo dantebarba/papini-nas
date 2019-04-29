@@ -8,15 +8,22 @@ services:
     ports:
       - "80:80"
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${TRAEFIK_CONFIG}:/etc/traefik
       - ./traefik.toml:/traefik.toml
     networks:
       - main
+      - default
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
+      - "traefik.backend=traefik"
       - "traefik.frontend.rule=Host:traefik.papini.lan"
       - "traefik.docker.network=main"
 
 networks:
   main:
-    external: true
+    external: 
+      name: main
+  default:
+    driver: bridge

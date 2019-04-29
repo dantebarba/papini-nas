@@ -1,14 +1,21 @@
 debug = true
 logLevel = "INFO" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+InsecureSkipVerify = true
 
 defaultEntryPoints = ["http"]
 [api]
+  entryPoint = "traefik"
+  dashboard = true
+  address = ":8080"
 
 [entryPoints]
   [entryPoints.http]
   address = ":80"
 
 [docker]
+endpoint = "unix:///var/run/docker.sock"
 domain = "papini.lan"
 watch = true
-exposedByDefault = false
+# This will hide all docker containers that don't have explicitly  
+# set label to "enable"
+exposedbydefault = false
