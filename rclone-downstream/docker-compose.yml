@@ -2,7 +2,7 @@ version: '2'
 
 services:
   movies-downstream:
-    image: bcardiff/rclone:latest
+    image: pfidr34/rclone:latest
     container_name: movies-downstream
     volumes:
       - "${STORAGE_LOCATION}/radarr/movies:/destination"
@@ -14,7 +14,7 @@ services:
       CRON: '0 3 * * 0'
       CRON_ABORT: '0 12 * * 0'
       CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
-      COMMAND: move
+      RCLONE_CMD: move
       FORCE_SYNC: 1
     networks:
       - main
