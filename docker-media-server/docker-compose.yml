@@ -11,6 +11,8 @@ services:
       - "traefik.basic.frontend.rule=Host:plex.${DOMAIN_URL}"
       - "traefik.basic.port=32400"
       - "traefik.basic.protocol=http"
+      - "traefik.backend.healthcheck.path=/web/index.html"
+      - "traefik.backend.healthcheck.interval=30s"
     volumes:
       - "${STORAGE_LOCATION}/plex:/config"
       - "${STORAGE_LOCATION}/sonarr/tvseries:/tv"
@@ -29,6 +31,8 @@ services:
       - "traefik.basic.frontend.rule=Host:sonarr.${DOMAIN_URL}"
       - "traefik.basic.port=8989"
       - "traefik.basic.protocol=http"
+      - "traefik.backend.healthcheck.path=/api/system/status?apikey=${SONARR_API_KEY}"
+      - "traefik.backend.healthcheck.interval=30s"
     networks:
       - main
   radarr:
@@ -41,6 +45,8 @@ services:
       - "traefik.basic.frontend.rule=Host:radarr.${DOMAIN_URL}"
       - "traefik.basic.port=7878"
       - "traefik.basic.protocol=http"
+      - "traefik.backend.healthcheck.path=/api/system/status?apikey=${RADARR_API_KEY}"
+      - "traefik.backend.healthcheck.interval=30s"
     networks:
       - main
 

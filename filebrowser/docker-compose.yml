@@ -14,6 +14,8 @@ services:
       - "traefik.basic.frontend.rule=Host:cloud.${DOMAIN_URL}"
       - "traefik.basic.port=80"
       - "traefik.basic.protocol=http"
+      - "traefik.backend.healthcheck.path=/"
+      - "traefik.backend.healthcheck.interval=30s"
     networks:
       - main
 

@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  movies-downstream:
+    image: bcardiff/rclone:latest
+    container_name: movies-downstream
+    volumes:
+      - "${STORAGE_LOCATION}/radarr/movies:/destination"
+      - "${RCLONE_CONIG}/config:/config"
+    environment:
+      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
+      SYNC_DEST: /destination
+      SYNC_OPTS: '-v --min-age 90d --delete-empty-src-dirs --dry-run'
+      CRON: '0 3 * * 0'
+      CRON_ABORT: '0 12 * * 0'
+      CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
+      COMMAND: move
+      FORCE_SYNC: 1
+    networks:
+      - main
+
+  series-downstream:
+    image: bcardiff/rclone:latest
+    container_name: series-downstream
+    volumes:
+      - "${STORAGE_LOCATION}/sonarr/series:/destination"
+      - "${RCLONE_CONIG}/config:/config"
+    environment:
+      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
+      SYNC_DEST: /destination
+      SYNC_OPTS: '-v --min-age 90d --delete-empty-src-dirs --dry-run'
+      CRON: '1 3 * * 0'
+      CRON_ABORT: '0 12 * * 0'
+      CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
+      COMMAND: move
+      FORCE_SYNC: 1
+    networks:
+      - main
+
+networks:
+  main:
+    external: true
+
+    
