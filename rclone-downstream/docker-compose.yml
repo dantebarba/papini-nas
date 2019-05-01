@@ -6,7 +6,7 @@ services:
     container_name: movies-downstream
     volumes:
       - "${STORAGE_LOCATION}/radarr/movies:/destination"
-      - "${RCLONE_CONIG}/config:/config"
+      - "${RCLONE_CONIG}:/config"
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
