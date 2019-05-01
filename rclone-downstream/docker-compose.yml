@@ -2,7 +2,7 @@ version: '2'
 
 services:
   movies-downstream:
-    image: pfidr34/rclone:latest
+    image: pfidr/rclone:latest
     container_name: movies-downstream
     volumes:
       - "${STORAGE_LOCATION}/radarr/movies:/destination"
