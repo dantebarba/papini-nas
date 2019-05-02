@@ -16,7 +16,6 @@ services:
       SYNC_OPTS: '-v --min-age 90d --delete-empty-src-dirs'
       CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
       RCLONE_CMD: move
-      FORCE_SYNC: 1
       CRON: '0 3 * * 0'
       CRON_ABORT: '0 12 * * 0'
     networks:
@@ -27,14 +26,14 @@ services:
     container_name: series-downstream
     restart: unless-stopped
     volumes:
-      - "${STORAGE_LOCATION}/sonarr/series:/destination"
+      - "${STORAGE_LOCATION}/sonarr/tvseries:/destination"
       - "${RCLONE_CONFIG}:/config"
       - "/root/.ssh:/.ssh:ro"
       - "${RCLONE_CONFIG}/logs_series:/tmp/"
     environment:
-      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
+      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/sonarr/tvseries
       SYNC_DEST: /destination
-      SYNC_OPTS: '-v --min-age 90d --delete-empty-src-dirs --dry-run'
+      SYNC_OPTS: '-v --min-age 90d --delete-empty-src-dirs'
       CHECK_URL: https://hc-ping.com/0b507d80-79fb-4b61-a211-227c11c98909
       RCLONE_CMD: move
       CRON: '0 3 * * 1'
