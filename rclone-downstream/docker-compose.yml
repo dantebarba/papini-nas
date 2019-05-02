@@ -9,10 +9,11 @@ services:
       - "${STORAGE_LOCATION}/radarr/movies:/destination"
       - "${RCLONE_CONFIG}:/config"
       - "/root/.ssh:/.ssh"
+      - "${RCLONE_CONFIG}/logs:/tmp/"
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
-      SYNC_OPTS: '-v --min-age 90d --delete-empty-src-dirs --dry-run'
+      SYNC_OPTS: '-v --min-age 90d --delete-empty-src-dirs'
       CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
       RCLONE_CMD: move
       FORCE_SYNC: 1
@@ -27,8 +28,9 @@ services:
     restart: unless-stopped
     volumes:
       - "${STORAGE_LOCATION}/sonarr/series:/destination"
-      - "${RCLONE_CONFIG}/config:/config"
+      - "${RCLONE_CONFIG}:/config"
       - "/root/.ssh:/.ssh"
+      - "${RCLONE_CONFIG}/logs:/tmp/"
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
