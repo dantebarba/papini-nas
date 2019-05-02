@@ -8,8 +8,8 @@ services:
     volumes:
       - "${STORAGE_LOCATION}/radarr/movies:/destination"
       - "${RCLONE_CONFIG}:/config"
-      - "/root/.ssh:/.ssh"
-      - "${RCLONE_CONFIG}/logs:/tmp/"
+      - "/root/.ssh:/.ssh:ro"
+      - "${RCLONE_CONFIG}/logs_movies:/tmp/"
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
@@ -29,8 +29,8 @@ services:
     volumes:
       - "${STORAGE_LOCATION}/sonarr/series:/destination"
       - "${RCLONE_CONFIG}:/config"
-      - "/root/.ssh:/.ssh"
-      - "${RCLONE_CONFIG}/logs:/tmp/"
+      - "/root/.ssh:/.ssh:ro"
+      - "${RCLONE_CONFIG}/logs_series:/tmp/"
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
