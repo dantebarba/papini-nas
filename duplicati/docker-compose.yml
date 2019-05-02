@@ -11,6 +11,7 @@ services:
       - ${DUPLICATI_CONFIG}:/data
     networks:
       - main
+    restart: unless-stopped
       
 networks:
   main:

@@ -4,6 +4,7 @@ services:
   movies-downstream:
     image: pfidr/rclone:latest
     container_name: movies-downstream
+    restart: unless-stopped
     volumes:
       - "${STORAGE_LOCATION}/radarr/movies:/destination"
       - "${RCLONE_CONFIG}:/config"
@@ -22,6 +23,7 @@ services:
   series-downstream:
     image: pfidr/rclone:latest
     container_name: series-downstream
+    restart: unless-stopped
     volumes:
       - "${STORAGE_LOCATION}/sonarr/series:/destination"
       - "${RCLONE_CONFIG}/config:/config"

@@ -4,6 +4,7 @@ services:
   filebrowser:
     container_name: filebrowser
     image: filebrowser/filebrowser
+    restart: unless-stopped
     volumes:
       - ${FILEBROWSER_HOME}:/srv
       - ${FILEBROWSER_CONFIG}/database.db:/database.db

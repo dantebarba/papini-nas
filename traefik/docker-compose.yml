@@ -4,7 +4,7 @@ services:
   load-balancer:
     image: traefik:v1.7.11
     container_name: load-balancer
-    restart: always
+    restart: unless-stopped
     ports:
       - "80:80"
     volumes:
