@@ -11,4 +11,4 @@ services:
       CRON: '0,30 * * * *'
       LOG_LEVEL: '7'
     volumes:
-    - $HEALTHCHECK_CONFIG:"/tmp/"
+    - $HEALTHCHECK_CONFIG:/tmp/
