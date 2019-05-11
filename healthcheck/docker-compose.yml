@@ -8,4 +8,4 @@ services:
       CHECK_URL: 'https://hc-ping.com/6aea44fe-22d1-4652-85ee-fe0757f41a0e'
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0,30 * * * *'
-      LOG_LEVEL: '7'
+      LOG_LEVEL: '8'
