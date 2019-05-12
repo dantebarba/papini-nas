@@ -21,3 +21,7 @@ services:
       - "traefik.basic.protocol=http"
     networks:
       - main
+
+networks:
+  main:
+    external: true
