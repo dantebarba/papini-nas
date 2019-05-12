@@ -16,8 +16,8 @@ services:
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      PGID: '1000'
-      PUID: '1000'
+      PGID: '0'
+      PUID: '0'
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
