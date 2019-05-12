@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  netdata:
+    image: netdata/netdata
+    container_name: netdata
+    hostname: papini.dantebarba.com.ar # set to fqdn of host
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:netdata.${DOMAIN_URL}"
+      - "traefik.basic.port=19999"
+      - "traefik.basic.protocol=http"
+    networks:
+      - main
