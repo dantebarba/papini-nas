@@ -4,6 +4,7 @@ services:
   netdata:
     image: netdata/netdata
     container_name: netdata
+    hostname: netdata.papini.dantebarba.com.ar # set to fqdn of host
     ports:
       - 19999:19999
     cap_add:
@@ -15,8 +16,7 @@ services:
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      PGID: '0'
-      PUID: '0'
+      PGID: '1000'
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
