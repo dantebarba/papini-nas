@@ -1,6 +1,30 @@
 version: '2'
 
 services:
+  transmission:
+    extends: 
+      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+      service: transmission
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:transmission.${DOMAIN_URL}"
+      - "traefik.basic.port=9091"
+      - "traefik.basic.protocol=http"
+    networks:
+      - main
+  jackett:
+    extends: 
+      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+      service: jackett
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:jackett.${DOMAIN_URL}"
+      - "traefik.basic.port=9117"
+      - "traefik.basic.protocol=http"
+    networks:
+      - main
   plex:
     extends: 
       file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
