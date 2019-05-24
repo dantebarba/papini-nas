@@ -10,6 +10,6 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0,30 * * * *'
       LOG_LEVEL: '7'
-      FORCE_SYNC: '1'
+      FORCE_TEST: '1'
     volumes:
     - $HEALTHCHECK_CONFIG:/tmp/
