@@ -11,8 +11,8 @@ services:
       - ${CLOUDPRINT_CONFIG}/cups:/etc/cups
       - ${CLOUDPRINT_CONFIG}/credentials:/root
     environment:
-      - CUPS_USER_ADMIN: admin
-      - CUPS_USER_PASSWORD: ${CUPS_USER_PASSWORD}
+      CUPS_USER_ADMIN: admin
+      CUPS_USER_PASSWORD: ${CUPS_USER_PASSWORD}
     ports:
       - 631:631
     labels:
