@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  cloudprint:
+    image: jaymoulin/google-cloudprint
+    container_name: cloudprint
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - ${CLOUDPRINT_CONFIG}/cups:/etc/cups
+      - ${CLOUDPRINT_CONFIG}/credentials:/root
+    environment:
+      - CUPS_USER_ADMIN: admin
+      - CUPS_USER_PASSWORD: ${CUPS_USER_PASSWORD}
+    ports:
+      - 631:631
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:printer.${DOMAIN_URL}"
+      - "traefik.basic.port=631"
+      - "traefik.basic.protocol=http"
+    networks:
+      - main
+
+networks: 
+  main:
+    external: true

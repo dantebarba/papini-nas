@@ -16,3 +16,4 @@ echo 'SONARR_API_TOKEN=' >> /etc/environment
 echo 'REMOTE_UPSTREAM=' >> /etc/environment
 echo 'REMOTE_STORAGE_LOCATION="export $(ssh $REMOTE_UPSTREAM "env | grep STORAGE_LOCATION)"' >> /etc/environment
 echo 'HEALTHCHECK_CONFIG=' >> /etc/environment
+echo 'CLOUDPRINT_CONFIG=' >> /etc/environment
