@@ -9,4 +9,5 @@ services:
       - /var/run/dbus:/var/run/dbus:ro
       - ${CLOUDPRINT_CONFIG}:/config
     network_mode: host
+    command: "gcp-cups-connector --log-to-console"
     working_dir: /config
