@@ -4,8 +4,7 @@ services:
   cloudprint:
     image: tianon/google-cloud-print-connector
     container_name: cloudprint
-    restart: unless-stopped
-    user: 1000
+    user: 1000:1000
     volumes:
       - /var/run/dbus:/var/run/dbus:ro
       - ${CLOUDPRINT_CONFIG}:/config
