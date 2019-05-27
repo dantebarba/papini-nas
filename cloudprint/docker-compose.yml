@@ -9,3 +9,4 @@ services:
       - /var/run/dbus:/var/run/dbus:ro
       - ${CLOUDPRINT_CONFIG}:/config
     network_mode: host
+    working_dir: /config
