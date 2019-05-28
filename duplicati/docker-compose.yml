@@ -8,7 +8,7 @@ services:
       - 8200:8200
     volumes:
       - ${DUPLICATI_HOME}:/home
-      - ${DUPLICATI_CONFIG}:/data
+      - ${CONFIG_LOCATION}/duplicati:/data
     networks:
       - main
     restart: unless-stopped

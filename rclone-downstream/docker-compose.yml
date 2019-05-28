@@ -7,9 +7,9 @@ services:
     restart: unless-stopped
     volumes:
       - "${STORAGE_LOCATION}/radarr/movies:/destination"
-      - "${RCLONE_CONFIG}:/config"
+      - "${CONFIG_LOCATION}/rclone:/config"
       - "/root/.ssh:/.ssh:ro"
-      - "${RCLONE_CONFIG}/logs_movies:/tmp/"
+      - "${CONFIG_LOCATION}/rclone/logs_movies:/tmp/"
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
@@ -28,9 +28,9 @@ services:
     restart: unless-stopped
     volumes:
       - "${STORAGE_LOCATION}/sonarr/tvseries:/destination"
-      - "${RCLONE_CONFIG}:/config"
+      - "${CONFIG_LOCATION}/rclone:/config"
       - "/root/.ssh:/.ssh:ro"
-      - "${RCLONE_CONFIG}/logs_series:/tmp/"
+      - "${CONFIG_LOCATION}/rclone/logs_series:/tmp/"
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/sonarr/tvseries
       SYNC_DEST: /destination

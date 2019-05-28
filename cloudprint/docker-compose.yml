@@ -7,7 +7,7 @@ services:
     user: 1000:1000
     volumes:
       - /var/run/dbus:/var/run/dbus:ro
-      - ${CLOUDPRINT_CONFIG}:/config
+      - ${CONFIG_LOCATION}/cloudprint:/config
     network_mode: host
     command: "gcp-cups-connector --log-to-console"
     working_dir: /config
