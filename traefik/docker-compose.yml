@@ -6,7 +6,8 @@ services:
     container_name: load-balancer
     restart: unless-stopped
     ports:
-      - "80:80"
+      - 80:80
+      - 443:443
     environment:
       CLOUDFLARE_EMAIL: ${CLOUDFLARE_EMAIL}
       CLOUDFLARE_API_KEY: ${CLOUDFLARE_API_KEY}
@@ -19,7 +20,7 @@ services:
       - default
     labels:
       - "traefik.enable=true"
-      - "traefik.port=8080"
+      - "traefik.port=80"
       - "traefik.backend=traefik"
       - "traefik.frontend.entryPoints=http,https"
       - "traefik.frontend.rule=Host:traefik.${DOMAIN_URL}"
