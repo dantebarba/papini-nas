@@ -5,6 +5,7 @@ services:
     container_name: iperf
     image: networkstatic/iperf3
     restart: unless-stopped
+    command: -s
     ports:
       - 5201:5201/tcp
       - 5201:5201/udp
