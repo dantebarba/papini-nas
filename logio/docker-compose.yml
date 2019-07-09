@@ -15,7 +15,7 @@ services:
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:logs.${DOMAIN_URL}"
       - "traefik.basic.port=28778"
-      - "traefik.basic.protocol=http"
+      - "traefik.frontend.entryPoints=http,https"
 
   logio-harvester:
     image: blacklabelops/logio
