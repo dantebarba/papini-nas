@@ -1,20 +1,21 @@
-version: '2'
-
+version: '2'  
+  
 services:
   load-balancer:
     image: traefik:v1.7.11
     container_name: load-balancer
     restart: unless-stopped
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     environment:
-      CLOUDFLARE_EMAIL: ${CLOUDFLARE_EMAIL}
-      CLOUDFLARE_API_KEY: ${CLOUDFLARE_API_KEY}
+      - CF_API_EMAIL=${CLOUDFLARE_EMAIL}
+      - CF_API_KEY=${CLOUDFLARE_API_KEY}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ${CONFIG_LOCATION}/traefik:/etc/traefik
+      - ${STORAGE_LOCATION}/traefik:/etc/traefik
       - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
     networks:
       - main
       - default
@@ -22,9 +23,9 @@ services:
       - "traefik.enable=true"
       - "traefik.port=8080"
       - "traefik.backend=traefik"
+      - "traefik.docker.network=main"
       - "traefik.frontend.entryPoints=http,https"
       - "traefik.frontend.rule=Host:traefik.${DOMAIN_URL}"
-      - "traefik.docker.network=main"
 
 networks:
   main:
