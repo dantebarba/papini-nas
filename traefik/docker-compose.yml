@@ -7,6 +7,9 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+    environment:
+      CLOUDFLARE_EMAIL: ${CLOUDFLARE_EMAIL}
+      CLOUDFLARE_API_KEY: ${CLOUDFLARE_API_KEY}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${CONFIG_LOCATION}/traefik:/etc/traefik
