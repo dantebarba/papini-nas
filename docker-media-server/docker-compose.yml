@@ -10,7 +10,7 @@ services:
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:transmission.${DOMAIN_URL}"
       - "traefik.basic.port=9091"
-      - "traefik.basic.protocol=http"
+      - "traefik.frontend.entryPoints=http,https"
     networks:
       - main
   jackett:
@@ -22,7 +22,7 @@ services:
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:jackett.${DOMAIN_URL}"
       - "traefik.basic.port=9117"
-      - "traefik.basic.protocol=http"
+      - "traefik.frontend.entryPoints=http,https"
     networks:
       - main
   plex:
@@ -34,7 +34,7 @@ services:
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:plex.${DOMAIN_URL}"
       - "traefik.basic.port=32400"
-      - "traefik.basic.protocol=http"
+      - "traefik.frontend.entryPoints=http,https"
       - "traefik.backend.healthcheck.path=/web/index.html"
       - "traefik.backend.healthcheck.interval=30s"
     volumes:
@@ -54,7 +54,7 @@ services:
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:sonarr.${DOMAIN_URL}"
       - "traefik.basic.port=8989"
-      - "traefik.basic.protocol=http"
+      - "traefik.frontend.entryPoints=http,https"
       - "traefik.backend.healthcheck.path=/api/system/status?apikey=${SONARR_API_KEY}"
       - "traefik.backend.healthcheck.interval=30s"
     networks:
@@ -68,7 +68,7 @@ services:
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:radarr.${DOMAIN_URL}"
       - "traefik.basic.port=7878"
-      - "traefik.basic.protocol=http"
+      - "traefik.frontend.entryPoints=http,https"
       - "traefik.backend.healthcheck.path=/api/system/status?apikey=${RADARR_API_KEY}"
       - "traefik.backend.healthcheck.interval=30s"
     networks:
