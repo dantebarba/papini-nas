@@ -11,11 +11,32 @@ defaultEntryPoints = ["http"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "papini.dantebarba.com.ar"
+domain = "${DOMAIN_URL}"
 watch = true
 # This will hide all docker containers that don't have explicitly  
 # set label to "enable"
 exposedbydefault = false
+
+[acme]
+email = "${ACME_EMAIL}"
+storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+acmeLogging=true
+[acme.dnsChallenge]
+  provider = "cloudflare"
+  delayBeforeCheck = 300
+[[acme.domains]]
+   main = "${DOMAIN_URL}"
+[[acme.domains]]
+   main = "*.${DOMAIN_URL}"
