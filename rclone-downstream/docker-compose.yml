@@ -17,8 +17,8 @@ services:
       CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
       RCLONE_CMD: move
       TZ: 'America/Argentina/Buenos_Aires'
-      CRON: '0 3 * * 0'
-      CRON_ABORT: '0 12 * * 0'
+      CRON: '0 3 * * *'
+      CRON_ABORT: '0 12 * * *'
     networks:
       - main
 
@@ -38,8 +38,8 @@ services:
       CHECK_URL: https://hc-ping.com/0b507d80-79fb-4b61-a211-227c11c98909
       RCLONE_CMD: move
       TZ: 'America/Argentina/Buenos_Aires'
-      CRON: '0 3 * * 1'
-      CRON_ABORT: '0 12 * * 1'
+      CRON: '0 3 * * *'
+      CRON_ABORT: '0 15 * * *'
     networks:
       - main
 
