@@ -6,7 +6,7 @@ services:
     image: dantebarba/steamcmd-hlds
     restart: unless-stopped
     volumes:
-      - "$HOME/hlds:~/steamcmd"
+      - $HOME/hlds:~/steamcmd
     ports:
       - 27015:27015/tcp
       - 27015:27015/udp
