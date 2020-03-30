@@ -3,10 +3,10 @@ version: '2'
 services:
   steamcmd:
     container_name: steamcmd
-    image: dantebarba/steamcmd-hlds
+    image: dantebarba/steamcmd-hlds:latest
     restart: unless-stopped
     volumes:
-      - $HOME/hlds:$HOME/steamcmd
+      - "./server.cfg:/home/steam/hlds/cstrike/server.cfg"
     ports:
       - 27015:27015/tcp
       - 27015:27015/udp
