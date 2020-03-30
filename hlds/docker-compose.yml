@@ -3,6 +3,7 @@ version: '2'
 services:
   steamcmd:
     container_name: steamcmd
+    build: .
     image: dantebarba/steamcmd-hlds:latest
     restart: unless-stopped
     volumes:
