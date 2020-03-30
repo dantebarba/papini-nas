@@ -1,4 +1,6 @@
-FROM dantebarba/steamcmd-hlds
+FROM cm2network/steamcmd
+
+MAINTAINER dantebarba.alerts@gmail.com
 
 RUN bash $HOME/steamcmd/steamcmd.sh +login anonymous +force_install_dir ../hlds +app_set_config 90 mod cstrike +app_update 90 validate +app_update 90 validate +app_update 90 validate +quit
 
