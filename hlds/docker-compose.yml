@@ -9,7 +9,6 @@ services:
     volumes:
       - "./server.cfg:/home/steam/hlds/cstrike/server.cfg"
       - "./liblist.gam:/home/steam/hlds/cstrike/liblist.gam"
-      - "./dproto.cfg:/home/steam/hlds/cstrike/dproto.cfg"
       - "./addons:/home/steam/hlds/cstrike/addons"
     ports:
       - 27015:27015/tcp
