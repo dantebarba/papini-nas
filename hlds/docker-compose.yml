@@ -8,6 +8,7 @@ services:
     command: ./hlds_run -game cstrike -autoupdate -insecure +port 27015 +maxplayers 12 +map de_dust2 +rcon_password 1A2B3C4E +sv_lan 0 +exec server.cfg
     volumes:
       - "./server.cfg:/home/steam/hlds/cstrike/server.cfg"
+      - "./addons:/home/steam/hlds/cstrike/addons"
     ports:
       - 27015:27015/tcp
       - 27015:27015/udp
