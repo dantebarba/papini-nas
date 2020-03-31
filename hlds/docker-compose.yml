@@ -18,6 +18,7 @@ services:
       - "./rehlds/valve/dlls/director.so:/home/steam/hlds/valve/dlls/director.so"
       - "./addons:/home/steam/hlds/cstrike/addons"
       - "./reunion.cfg:/home/steam/hlds/reunion.cfg"
+      - "./liblist.gam:/home/steam/hlds/cstrike/liblist.gam"
     ports:
       - 27015:27015/tcp
       - 27015:27015/udp
