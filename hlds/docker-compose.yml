@@ -5,9 +5,10 @@ services:
     container_name: steamcmd
     image: dantebarba/steamcmd-hlds:latest
     restart: unless-stopped
-    command: ./hlds_run -game cstrike -autoupdate -insecure +port 27015 +maxplayers 12 +map de_dust2 +rcon_password 1A2B3C4E +sv_lan 0 +exec server.cfg
     volumes:
       - "./server.cfg:/home/steam/hlds/cstrike/server.cfg"
+      - "./liblist.gam:/home/steam/hlds/cstrike/liblist.gam"
+      - "./dproto.cfg:/home/steam/hlds/cstrike/dproto.cfg"
       - "./addons:/home/steam/hlds/cstrike/addons"
     ports:
       - 27015:27015/tcp
