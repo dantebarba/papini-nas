@@ -15,9 +15,6 @@ action(){
   # Plan shutdown in 5 minutes, if supported by shutdown script
   shutdown -P +5 || true
 
-  echo "Stopping all Docker containers..."
-  docker ps -q | xargs --no-run-if-empty docker stop --time 300
-
   # Shutdown now, if we finish early with previous command
   shutdown -P now
 }

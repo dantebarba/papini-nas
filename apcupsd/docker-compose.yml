@@ -8,5 +8,7 @@ services:
     environment:
       TZ: America/Argentina/Buenos_Aires
     volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
       - "/tmp/apcupsd-docker:/tmp/apcupsd-docker"
       - "./apcupsd.conf:/etc/apcupsd/apcupsd.conf"
