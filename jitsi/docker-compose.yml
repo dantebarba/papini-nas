@@ -75,7 +75,7 @@ services:
             - LDAP_TLS_CACERT_FILE
             - LDAP_TLS_CACERT_DIR
             - LDAP_START_TLS
-            - XMPP_DOMAIN=meet.jitsi
+            - XMPP_DOMAIN
             - XMPP_AUTH_DOMAIN
             - XMPP_GUEST_DOMAIN
             - XMPP_MUC_DOMAIN
@@ -166,4 +166,5 @@ services:
 
 networks:
   main:
+    meet.jitsi:
     external: true
