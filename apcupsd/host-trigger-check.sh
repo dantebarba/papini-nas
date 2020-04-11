@@ -13,10 +13,10 @@ action(){
   echo "Detected '1' in '$TRIGGERFILE'."
 
   # Plan shutdown in 5 minutes, if supported by shutdown script
-  shutdown -P +5 || true
+  /sbin/shutdown -P +5 || true
 
   # Shutdown now, if we finish early with previous command
-  shutdown -P now
+  /sbin/shutdown -P now
 }
 
 ### Do not change below. Except you know what you are doing ###
