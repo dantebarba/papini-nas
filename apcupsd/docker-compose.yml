@@ -6,7 +6,7 @@ services:
     privileged: true
     container_name: apcupsd
     environment:
-      - TZ: America/Argentina/Buenos_Aires
+      TZ: America/Argentina/Buenos_Aires
     volumes:
       - "/tmp/apcupsd-docker:/tmp/apcupsd-docker"
       - "./apcupsd.conf:/etc/apcupsd/apcupsd.conf"
