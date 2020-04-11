@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  apcupsd:
+    image: gersilex/apcupsd
+    container_name: apcupsd
+    volumes:
+      - "/tmp/apcupsd-docker:/tmp/apcupsd-docker"
+      - "./apcupsd.conf:/etc/apcupsd/apcupsd.conf"
