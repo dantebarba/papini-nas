@@ -2,7 +2,7 @@ version: '3'
 
 services:
   spotify-ripper:
-    image: docker pull sebastianalbers/spotify-ripper
+    image: sebastianalbers/spotify-ripper
     container_name: spotify-ripper
     environment:
       SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
