@@ -2,11 +2,15 @@ version: '3'
 
 services:
   spotify-ripper:
-    image: sebastianalbers/spotify-ripper
+    image: tinuva/spotify-ripper
     container_name: spotify-ripper
     environment:
+      user: ${SPOTIFY_USER}
+      pass: ${SPOTIFY_PASS}
+      playlist: ${SPOTIFY_PLAYLIST}
       SPOTIPY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
       SPOTIPY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
+      SPOTIPY_REDIRECT_URI: http://www.purple.com
     volumes:
       - "${SPOTIFY_RIPPER_CONFIG}:/config"
       - ${STORAGE_LOCATION}/spotify-ripper/music:/music
