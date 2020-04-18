@@ -74,6 +74,19 @@ services:
     networks:
       - main
 
+  deezldr:
+    extends: 
+      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+      service: deezldr
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:music.${DOMAIN_URL}"
+      - "traefik.basic.port=1730"
+      - "traefik.frontend.entryPoints=http,https"
+    networks:
+      - main
+
 
 networks:
   main:
