@@ -1,16 +1,29 @@
 version: '3'
 
 services:
-  spotify-ripper:
-    image: tinuva/spotify-ripper
-    container_name: spotify-ripper
+  spotify-ripper-web:
+    image: dantebarba/spotify-ripper-web:0.0.1
+    container_name: spotify-ripper-web
     environment:
       user: ${SPOTIFY_USER}
       pass: ${SPOTIFY_PASS}
-      playlist: ${SPOTIFY_PLAYLIST}
       SPOTIPY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
       SPOTIPY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
       SPOTIPY_REDIRECT_URI: http://www.purple.com
     volumes:
       - "${SPOTIFY_RIPPER_CONFIG}:/config"
       - ${STORAGE_LOCATION}/spotify-ripper/music:/music
+
+  spotify-cron:
+    image: dantebarba/whatsmyhealth
+    container_name: spotify-cron
+    restart: unless-stopped
+    environment:
+      CHECK_URL: 'https://hc-ping.com/2fb23522-d734-4cb9-9eb8-63633ca211d5'
+      TZ: 'America/Argentina/Buenos_Aires'
+      CRON: '0,5 * * * *'
+      TEST_URL: 'http://spotify-ripper-web:5000/api/v1/${SPOTIFY_PLAYLIST}'
+      LOG_LEVEL: '7'
+      FORCE_TEST: '1'
+    volumes:
+    - $CONFIG_LOCATION/spotify-cron:/tmp/
