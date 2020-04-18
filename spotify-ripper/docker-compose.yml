@@ -2,7 +2,7 @@ version: '3'
 
 services:
   spotify-ripper:
-    image: rueckix/spotify-ripper
+    image: tinuva/spotify-ripper
     container_name: spotify-ripper
     environment:
       user: ${SPOTIFY_USER}
