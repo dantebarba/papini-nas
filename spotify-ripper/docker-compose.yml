@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  spotify-ripper:
+    image: docker pull sebastianalbers/spotify-ripper
+    container_name: spotify-ripper
+    environment:
+      "SPOTIFY_CLIENT_ID": ${SPOTIFY_CLIENT_ID}
+      "SPOTIPY_CLIENT_SECRET": ${SPOTIPY_CLIENT_SECRET}
+    volumes:
+      - "${SPOTIFY_RIPPER_CONFIG}:/config"
+      - ${STORAGE_LOCATION}/spotify-ripper/music:/music
