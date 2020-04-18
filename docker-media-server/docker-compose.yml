@@ -59,6 +59,7 @@ services:
       - "traefik.backend.healthcheck.interval=30s"
     networks:
       - main
+      
   radarr:
     extends: 
       file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
