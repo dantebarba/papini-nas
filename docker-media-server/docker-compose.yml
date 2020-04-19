@@ -13,18 +13,19 @@ services:
       - "traefik.frontend.entryPoints=http,https"
     networks:
       - main
-  jackett:
-    extends: 
-      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-      service: jackett
-    labels:
-      - "traefik.docker.network=main"
-      - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:jackett.${DOMAIN_URL}"
-      - "traefik.basic.port=9117"
-      - "traefik.frontend.entryPoints=http,https"
-    networks:
-      - main
+  # jackett:
+  #   extends: 
+  #     file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
+  #     service: jackett
+  #   labels:
+  #     - "traefik.docker.network=main"
+  #     - "traefik.enable=true"
+  #     - "traefik.basic.frontend.rule=Host:jackett.${DOMAIN_URL}"
+  #     - "traefik.basic.port=9117"
+  #     - "traefik.frontend.entryPoints=http,https"
+  #   networks:
+  #     - main
+  
   plex:
     extends: 
       file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
