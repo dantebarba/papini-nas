@@ -43,6 +43,27 @@ services:
     networks:
       - main
 
+  music-downstream:
+    image: pfidr/rclone:latest
+    container_name: music-downstream
+    restart: unless-stopped
+    volumes:
+      - "${STORAGE_LOCATION}/deezldr/music:/destination"
+      - "${CONFIG_LOCATION}/rclone:/config"
+      - "/root/.ssh:/.ssh:ro"
+      - "${CONFIG_LOCATION}/rclone/logs_music:/tmp/"
+    environment:
+      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/deezldr/music
+      SYNC_DEST: /destination
+      SYNC_OPTS: '-v --min-age 30d --delete-empty-src-dirs'
+      CHECK_URL: 'https://hc-ping.com/5610a3b0-f036-41d0-8a3d-260b2b4b57ce'
+      RCLONE_CMD: move
+      TZ: 'America/Argentina/Buenos_Aires'
+      CRON: '0 3 * * *'
+      CRON_ABORT: '0 15 * * *'
+    networks:
+      - main
+
 networks:
   main:
     external: true
