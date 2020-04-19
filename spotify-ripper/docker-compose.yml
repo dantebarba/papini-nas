@@ -10,6 +10,7 @@ services:
       SPOTIPY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
       SPOTIPY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
       SPOTIPY_REDIRECT_URI: http://www.purple.com
+      STOP_AFTER: 35m
     volumes:
       - "${SPOTIFY_RIPPER_CONFIG}:/config"
       - ${STORAGE_LOCATION}/spotify-ripper/music:/music
@@ -21,7 +22,7 @@ services:
     environment:
       CHECK_URL: 'https://hc-ping.com/2fb23522-d734-4cb9-9eb8-63633ca211d5'
       TZ: 'America/Argentina/Buenos_Aires'
-      CRON: '0,5 * * * *'
+      CRON: '*/40 6-10 * * *'
       TEST_URL: 'http://spotify-ripper-web:5000/api/v1/${SPOTIFY_PLAYLIST}'
       LOG_LEVEL: '7'
       FORCE_TEST: '1'
