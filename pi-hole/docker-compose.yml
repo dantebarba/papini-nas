@@ -9,6 +9,8 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
+      - "8000:80"
+      - "8001:443"
     environment:
       TZ: 'America/Argentina/Buenos_Aires'
       WEBPASSWORD: ${PIHOLE_PASSWORD}
