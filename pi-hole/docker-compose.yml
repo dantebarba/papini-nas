@@ -27,8 +27,8 @@ services:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:pihole.${DOMAIN_URL}"
-      - "traefik.basic.port=443"
-      - "traefik.frontend.entryPoints=https"
+      - "traefik.basic.port=80,443"
+      - "traefik.frontend.entryPoints=http,https"
     networks:
       - main
 
