@@ -5,6 +5,7 @@ services:
     container_name: timemachine
     hostname: papini.local
     image: mbentley/timemachine:smb
+    restart: unless-stopped
     environment:
       CUSTOM_SMB_CONFIG: "false"
       CUSTOM_USER: "false"
