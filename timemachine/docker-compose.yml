@@ -5,8 +5,8 @@ services:
     container_name: timemachine
     image: mbentley/timemachine:smb
     environment:
-      CUSTOM_SMB_CONFIG: false
-      CUSTOM_USER: false
+      CUSTOM_SMB_CONFIG: "false"
+      CUSTOM_USER: "false"
       MIMIC_MODEL: TimeCapsule8,119
       EXTERNAL_CONF: ""
       HIDE_SHARES: "no"
@@ -14,7 +14,7 @@ services:
       TM_PASSWORD: ${TIMEMACHINE_PASSWORD}
       TM_UID: 1000
       TM_GID: 1000
-      SET_PERMISSIONS: false
+      SET_PERMISSIONS: "false"
       SHARE_NAME: TimeMachine
       SMB_PORT: 445
       VOLUME_SIZE_LIMIT: "0"
