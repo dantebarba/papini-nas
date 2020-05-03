@@ -13,8 +13,8 @@ services:
       HIDE_SHARES: "no"
       TM_USERNAME: "timemachine"
       TM_PASSWORD: ${TIMEMACHINE_PASSWORD}
-      TM_UID: 1000
-      TM_GID: 1000
+      TM_UID: ${PUID}
+      TM_GID: ${PGID}
       SET_PERMISSIONS: "false"
       SHARE_NAME: TimeMachine
       SMB_PORT: 445
