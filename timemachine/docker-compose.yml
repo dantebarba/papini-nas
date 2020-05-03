@@ -13,10 +13,10 @@ services:
       EXTERNAL_CONF: ""
       HIDE_SHARES: "no"
       TM_USERNAME: "timemachine"
-      TM_PASSWORD: ${TIMEMACHINE_PASSWORD}
+      PASSWORD: ${TIMEMACHINE_PASSWORD}
       TM_UID: ${PUID}
       TM_GID: ${PGID}
-      SET_PERMISSIONS: "false"
+      SET_PERMISSIONS: "true"
       SHARE_NAME: TimeMachine
       SMB_PORT: 445
       VOLUME_SIZE_LIMIT: "0"
