@@ -4,7 +4,7 @@ services:
   timemachine:
     container_name: timemachine
     image: mbentley/timemachine:smb
-    envinronment:
+    environment:
       CUSTOM_SMB_CONFIG: false
       CUSTOM_USER: false
       MIMIC_MODEL: TimeCapsule8,119
