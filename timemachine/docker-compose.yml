@@ -3,6 +3,7 @@ version: '3.3'
 services:
   timemachine:
     container_name: timemachine
+    hostname: papini.local
     image: mbentley/timemachine:smb
     environment:
       CUSTOM_SMB_CONFIG: "false"
