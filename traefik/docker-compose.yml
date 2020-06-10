@@ -13,7 +13,7 @@ services:
       - "--acme.dnsChallenge.delaybeforecheck=1"
       - "--acme.domains=${DOMAIN_URL},*.${DOMAIN_URL}"
       - "--acme.onHostRule=true"
-      - "--acme.logging=true"
+      - "--acme.acmelogging=true"
       - "--acme.email=${ACME_EMAIL}"
     ports:
       - "80:80"
