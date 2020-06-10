@@ -20,6 +20,8 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
       CRON_ABORT: '0 12 * * *'
+      UID: ${PUID}
+      GID: ${PGID}
     networks:
       - main
 
@@ -42,6 +44,8 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
       CRON_ABORT: '0 15 * * *'
+      UID: ${PUID}
+      GID: ${PGID}
     networks:
       - main
 
@@ -64,6 +68,8 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
       CRON_ABORT: '0 15 * * *'
+      UID: ${PUID}
+      GID: ${PGID}
     networks:
       - main
 
