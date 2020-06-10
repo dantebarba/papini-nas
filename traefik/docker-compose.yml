@@ -5,6 +5,18 @@ services:
     image: traefik:v1.7.11
     container_name: load-balancer
     restart: unless-stopped
+    command:
+      - "--acme"
+      - "--acme.storage=acme.json"
+      - "--acme.entryPoint=https"
+      - "--acme.dnsChallenge.entryPoint=https"
+      - "--acme.dnsChallenge.provider=cloudflare"
+      - "--acme.dnsChallenge.delayBeforeCheck=1"
+      - "--acme.domains.main=${DOMAIN_URL}"
+      - "--acme.domains.main=*.${DOMAIN_URL}"
+      - "--acme.onHostRule=true"
+      - "--acme.logging=true"
+      - "--acme.email=${ACME_EMAIL}"
     ports:
       - "80:80"
       - "443:443"
