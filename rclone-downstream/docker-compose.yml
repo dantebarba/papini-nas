@@ -19,7 +19,7 @@ services:
       RCLONE_CMD: move
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
-      CRON_ABORT: '0 12 * * *'
+      CRON_ABORT: '0 10 * * *'
       UID: ${PUID}
       GID: ${PGID}
     networks:
@@ -43,7 +43,7 @@ services:
       RCLONE_CMD: move
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
-      CRON_ABORT: '0 15 * * *'
+      CRON_ABORT: '0 10 * * *'
       UID: ${PUID}
       GID: ${PGID}
     networks:
@@ -67,7 +67,7 @@ services:
       RCLONE_CMD: move
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
-      CRON_ABORT: '0 15 * * *'
+      CRON_ABORT: '0 6 * * *'
       UID: ${PUID}
       GID: ${PGID}
     networks:
