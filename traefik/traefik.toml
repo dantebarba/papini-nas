@@ -1,5 +1,5 @@
 #debug = true
-logLevel = "ERROR" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+logLevel = "DEBUG" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 InsecureSkipVerify = true
 
 defaultEntryPoints = ["http"]
