@@ -13,7 +13,7 @@ services:
     environment:
       SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
-      SYNC_OPTS: '-vv --min-age 30d --delete-empty-src-dirs'
+      SYNC_OPTS: '-v --min-age 30d --delete-empty-src-dirs'
       CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
       # RCLONE_DIR_CHECK_SKIP: 'true'
       RCLONE_CMD: move
