@@ -17,6 +17,7 @@ services:
       CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
       RCLONE_DIR_CHECK_SKIP: 'true'
       RCLONE_CMD: move
+      FORCE_SYNC: ${FORCE_SYNC}
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
       CRON_ABORT: '0 10 * * *'
@@ -46,6 +47,7 @@ services:
       CRON_ABORT: '0 10 * * *'
       UID: ${PUID}
       GID: ${PGID}
+      FORCE_SYNC: ${FORCE_SYNC}
     networks:
       - main
 
@@ -70,6 +72,7 @@ services:
       CRON_ABORT: '0 6 * * *'
       UID: ${PUID}
       GID: ${PGID}
+      FORCE_SYNC: ${FORCE_SYNC}
     networks:
       - main
 
