@@ -11,7 +11,7 @@ services:
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
       - "${CONFIG_LOCATION}/rclone/logs_movies:/tmp/"
     environment:
-      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/radarr/movies
+      SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
       SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
       CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
@@ -36,11 +36,11 @@ services:
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
       - "${CONFIG_LOCATION}/rclone/logs_series:/tmp/"
     environment:
-      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/sonarr/tvseries
+      SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/sonarr/tvseries
       SYNC_DEST: /destination
       SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
       CHECK_URL: https://hc-ping.com/0b507d80-79fb-4b61-a211-227c11c98909
-      # RCLONE_DIR_CHECK_SKIP: 'true'
+      RCLONE_DIR_CHECK_SKIP: 'true'
       RCLONE_CMD: move
       TZ: 'America/Argentina/Buenos_Aires'
       CRON: '0 3 * * *'
@@ -61,7 +61,7 @@ services:
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
       - "${CONFIG_LOCATION}/rclone/logs_music:/tmp/"
     environment:
-      SYNC_SRC: DanteConePlex:${REMOTE_STORAGE_LOCATION}/deezldr/music
+      SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/deezldr/music
       SYNC_DEST: /destination
       SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
       RCLONE_DIR_CHECK_SKIP: 'true'
