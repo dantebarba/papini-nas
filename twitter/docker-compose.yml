@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   twitter-archive:
-    image: nginx:latest
+    image: nginx:alpine
     container_name: twitter-archive
     volumes:
       - ${STORAGE_LOCATION}/twitter.app:/usr/share/nginx/html:ro
