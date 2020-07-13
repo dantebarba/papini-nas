@@ -12,6 +12,7 @@ services:
       - "traefik.basic.frontend.rule=Host:twitter.${DOMAIN_URL}"
       - "traefik.basic.port=80"
       - "traefik.frontend.entryPoints=https"
+      - "traefik.frontend.headers.SSLRedirect=true"
     networks:
       - main
 
