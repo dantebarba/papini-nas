@@ -6,6 +6,9 @@ services:
     container_name: twitter-archive
     volumes:
       - ${STORAGE_LOCATION}/twitter.app:/usr/share/nginx/html:ro
+    environment:
+      - NGINX_HOST=twitter.${DOMAIN_URL}
+      - NGINX_PORT=80
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
