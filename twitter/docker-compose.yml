@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  twitter-archive:
+    image: nginx:latest
+    container_name: twitter-archive
+    volumes:
+      - ${STORAGE_LOCATION}/twitter.app:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:twitter.${DOMAIN_URL}"
+      - "traefik.basic.port=80"
+      - "traefik.frontend.entryPoints=https"
+    networks:
+      - main
+
+networks:
+  main:
+    external: true
