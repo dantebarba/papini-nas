@@ -41,6 +41,25 @@ services:
       - "traefik.frontend.entryPoints=http,https"
       - "traefik.frontend.rule=Host:traefik.${DOMAIN_URL}"
 
+  traefik-forward-auth:
+      image: thomseddon/traefik-forward-auth:2.1.0
+      container_name: traefik-forward-auth
+      environment:
+        GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+        GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+        OIDC_ISSUER: ${OIDC_ISSUER}
+        SECRET: secret_key
+        AUTH_HOST: ${AUTH_HOST}
+        COOKIE_DOMAIN: ${COOKIE_DOMAIN}
+      networks:
+        - main
+        - default
+      labels:
+        - traefik.port=4181
+        - traefik.frontend.rule=Host:auth.dantebarba.com.ar
+        - traefik.frontend.auth.forward.address=http://traefik-forward-auth:4181
+        - traefik.frontend.auth.forward.trustForwardHeader=true
+
 networks:
   main:
     external: true
