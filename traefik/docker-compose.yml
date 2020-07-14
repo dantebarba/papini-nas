@@ -41,27 +41,27 @@ services:
       - "traefik.frontend.entryPoints=http,https"
       - "traefik.frontend.rule=Host:traefik.${DOMAIN_URL}"
 
-  traefik-forward-auth:
-      image: thomseddon/traefik-forward-auth:2.1.0
-      container_name: traefik-forward-auth
-      environment:
-        PROVIDERS_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
-        PROVIDERS_GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
-        PROVIDERS_OIDC_ISSUER_URL: ${OIDC_ISSUER}
-        SECRET: secret_key
-        AUTH_HOST: ${AUTH_HOST}
-        COOKIE_DOMAIN: ${COOKIE_DOMAINS}
-      networks:
-        - main
-        - default
-      labels:
-        - "traefik.docker.network=main"
-        - "traefik.enable=true"
-        - "traefik.basic.frontend.rule=Host:auth.dantebarba.com.ar"
-        - "traefik.basic.port=4181"
-        - "traefik.frontend.entryPoints=http,https"
-        - "traefik.frontend.auth.forward.address=http://traefik-forward-auth:4181"
-        - "traefik.frontend.auth.forward.trustForwardHeader=true"
+  # traefik-forward-auth:
+  #     image: thomseddon/traefik-forward-auth:2.1.0
+  #     container_name: traefik-forward-auth
+  #     environment:
+  #       PROVIDERS_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+  #       PROVIDERS_GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+  #       PROVIDERS_OIDC_ISSUER_URL: ${OIDC_ISSUER}
+  #       SECRET: secret_key
+  #       AUTH_HOST: ${AUTH_HOST}
+  #       COOKIE_DOMAIN: ${COOKIE_DOMAINS}
+  #     networks:
+  #       - main
+  #       - default
+  #     labels:
+  #       - "traefik.docker.network=main"
+  #       - "traefik.enable=true"
+  #       - "traefik.basic.frontend.rule=Host:auth.dantebarba.com.ar"
+  #       - "traefik.basic.port=4181"
+  #       - "traefik.frontend.entryPoints=http,https"
+  #       - "traefik.frontend.auth.forward.address=http://traefik-forward-auth:4181"
+  #       - "traefik.frontend.auth.forward.trustForwardHeader=true"
 
 networks:
   main:
