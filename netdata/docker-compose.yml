@@ -22,6 +22,9 @@ services:
       - "traefik.basic.frontend.rule=Host:netdata.${DOMAIN_URL}"
       - "traefik.basic.port=19999"
       - "traefik.frontend.entryPoints=http,https"
+      - traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}
+      - traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User
+      - traefik.frontend.auth.forward.trustForwardHeader=true
     networks:
       - main
 
