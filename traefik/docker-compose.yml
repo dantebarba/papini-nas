@@ -55,10 +55,13 @@ services:
         - main
         - default
       labels:
-        - traefik.port=4181
-        - traefik.frontend.rule=Host:auth.dantebarba.com.ar
-        - traefik.frontend.auth.forward.address=http://traefik-forward-auth:4181
-        - traefik.frontend.auth.forward.trustForwardHeader=true
+        - "traefik.docker.network=main"
+        - "traefik.enable=true"
+        - "traefik.basic.frontend.rule=Host:auth.dantebarba.com.ar"
+        - "traefik.basic.port=4181"
+        - "traefik.frontend.entryPoints=http,https"
+        - "traefik.frontend.auth.forward.address=http://traefik-forward-auth:4181"
+        - "traefik.frontend.auth.forward.trustForwardHeader=true"
 
 networks:
   main:
