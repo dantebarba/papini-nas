@@ -45,8 +45,8 @@ services:
       image: thomseddon/traefik-forward-auth:2.1.0
       container_name: traefik-forward-auth
       environment:
-        GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
-        GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+        PROVIDERS_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+        PROVIDERS_GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
         OIDC_ISSUER: ${OIDC_ISSUER}
         SECRET: secret_key
         AUTH_HOST: ${AUTH_HOST}
