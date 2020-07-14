@@ -50,7 +50,7 @@ services:
         OIDC_ISSUER: ${OIDC_ISSUER}
         SECRET: secret_key
         AUTH_HOST: ${AUTH_HOST}
-        COOKIE_DOMAINS: ${COOKIE_DOMAINS}
+        COOKIE_DOMAIN: ${COOKIE_DOMAINS}
       networks:
         - main
         - default
