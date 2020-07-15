@@ -20,6 +20,12 @@ services:
       - "traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}"
       - "traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User"
       - "traefik.frontend.auth.forward.trustForwardHeader=true"
+      - traefik.frontend.headers.frameDeny=false
+      - traefik.frontend.headers.browserXSSFilter=true
+      - traefik.frontend.headers.isDevelopment=false
+      - traefik.frontend.headers.STSSeconds=315360000
+      - traefik.frontend.headers.forceSTSHeader=false
+      - traefik.frontend.headers.contentTypeNosniff=true
     networks:
       - main
 
