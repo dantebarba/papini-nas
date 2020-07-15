@@ -5,17 +5,20 @@ services:
     image: stevemcgrath/nessus_scanner:latest
     container_name: nessus
     ports:
-      - 8834:8834
+      - 8443:443
     environment:
       LICENSE: ${NESSUS_LICENSE}
       SCANNER_NAME: ${NESSUS_SCANNER_NAME}
+      MANAGER_PORT: 443
+      ADMIN_USER: ${NESSUS_USER}
+      ADMIN_PASS: ${NESSUS_PASS}
     volumes:
       - nessus:/opt/nessus
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:nessus.${DOMAIN_URL}"
-      - "traefik.basic.port=8834"
+      - "traefik.basic.port=443"
       - "traefik.frontend.entryPoints=https"
     networks:
       - main
