@@ -1,8 +1,8 @@
-#debug = true
-logLevel = "WARN" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+debug = true
+logLevel = "DEBUG" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 InsecureSkipVerify = true
 
-defaultEntryPoints = ["http"]
+defaultEntryPoints = ["https"]
 [api]
   entryPoint = "traefik"
   dashboard = true
@@ -21,9 +21,7 @@ defaultEntryPoints = ["http"]
       "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
       "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
       "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
-      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
-      "TLS_DHE_RSA_WITH_AES_256_GCM_SHA384",
-      "TLS_DHE_RSA_WITH_AES_128_GCM_SHA256"
+      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
     ]
 
 [retry]
