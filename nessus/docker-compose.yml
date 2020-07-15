@@ -9,14 +9,19 @@ services:
     environment:
       LICENSE: ${NESSUS_LICENSE}
       SCANNER_NAME: ${NESSUS_SCANNER_NAME}
+    volume:
+      - nessus:/opt/nessus
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:nessus.${DOMAIN_URL}"
       - "traefik.basic.port=8834"
-      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.entryPoints=https"
     networks:
       - main
+
+volumes:
+  nessus:
 
 networks:
   main:
