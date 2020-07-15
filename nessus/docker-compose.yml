@@ -9,7 +9,7 @@ services:
     environment:
       LICENSE: ${NESSUS_LICENSE}
       SCANNER_NAME: ${NESSUS_SCANNER_NAME}
-    volume:
+    volumes:
       - nessus:/opt/nessus
     labels:
       - "traefik.docker.network=main"
