@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  nessus:
+    image: stevemcgrath/nessus_scanner:latest
+    container_name: nessus
+    environment:
+      LICENSE: ${NESSUS_LICENSE}
+      SCANNER_NAME: ${NESSUS_SCANNER_NAME}
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:nessus.${DOMAIN_URL}"
+      - "traefik.basic.port=8834"
+      - "traefik.frontend.entryPoints=http,https"
+    networks:
+      - main
+
+networks:
+  main:
+    external: true
