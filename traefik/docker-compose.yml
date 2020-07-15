@@ -19,7 +19,6 @@ services:
       - "--docker.domain=${DOMAIN_URL}"
       - "--docker.exposedbydefault=false"
       - "--docker.watch=true"
-      - "--docker.tls.insecureSkipVerify=true"
     ports:
       - "80:80"
       - "443:443"
