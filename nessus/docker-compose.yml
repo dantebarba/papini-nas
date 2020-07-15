@@ -19,6 +19,7 @@ services:
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:nessus.${DOMAIN_URL}"
       - "traefik.basic.port=443"
+      - "traefik.protocol=https"
       - "traefik.frontend.entryPoints=https"
     networks:
       - main
