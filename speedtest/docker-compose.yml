@@ -12,7 +12,6 @@ services:
       - "traefik.frontend.rule=Host:speedtest.${DOMAIN_URL}"
       - traefik.frontend.headers.frameDeny=false
       - traefik.frontend.headers.browserXSSFilter=true
-      - traefik.frontend.headers.isDevelopment=false
       - traefik.frontend.headers.STSSeconds=315360000
       - traefik.frontend.headers.forceSTSHeader=false
       - traefik.frontend.headers.contentTypeNosniff=true
