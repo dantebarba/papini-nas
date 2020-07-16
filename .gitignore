@@ -100,3 +100,6 @@ hosts-discovery.txt
 
 # mypy
 .mypy_cache/
+
+# traefik
+acme.json
