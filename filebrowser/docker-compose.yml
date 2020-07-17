@@ -1,11 +1,11 @@
-version: '2'
+version: '3.3'
 
 services:
   filebrowser:
     container_name: filebrowser
     image: filebrowser/filebrowser:v2-debian
     restart: unless-stopped
-    entrypoint: /bin/sh -c "/filebrowser config set --auth.method=proxy --auth.header=X-Forwarded-User && /filebrowser users update 1 --username=${FILEBROWSER_ADMIN} && /filebrowser"
+    entrypoint: /bin/sh -c "/filebrowser init && /filebrowser config set --auth.method=proxy --auth.header=X-Forwarded-User && /filebrowser users update 1 --username=${FILEBROWSER_ADMIN} && /filebrowser"
     volumes:
       - ${FILEBROWSER_HOME}:/srv
       - ${CONFIG_LOCATION}/filebrowser/database.db:/database.db
