@@ -10,7 +10,7 @@ services:
       - ${FILEBROWSER_HOME}:/srv
       - ${CONFIG_LOCATION}/filebrowser/database.db:/database.db
       - ${CONFIG_LOCATION}/filebrowser/filebrowser.json:/.filebrowser.json
-      - ${CONFIG_LOCATION}/filebrowser/users.yaml:/users.json
+      - ${CONFIG_LOCATION}/filebrowser/users.json:/users.json
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
