@@ -11,7 +11,7 @@ services:
     volumes:
       - ${FILEBROWSER_HOME}:/srv
       - ${CONFIG_LOCATION}/filebrowser/data:/data
-      - ${CONFIG_LOCATION}/filebrowser/filebrowser.json:/.filebrowser.json
+      # - ${CONFIG_LOCATION}/filebrowser/filebrowser.json:/.filebrowser.json
       - ${CONFIG_LOCATION}/filebrowser/users.json:/users.json
     labels:
       - "traefik.docker.network=main"
