@@ -8,8 +8,8 @@ services:
     # entrypoint: /bin/sh -c "if [ ! -f $$FB_DATABASE ]; then /filebrowser config import /.filebrowser.json; fi;/filebrowser config set --auth.method=proxy --auth.header=X-Forwarded-User && /filebrowser users update admin --username=${FILEBROWSER_ADMIN}"
     volumes:
       - ${FILEBROWSER_HOME}:/srv
-      - ${CONFIG_LOCATION}/filebrowser/data:/data
-      # - ${CONFIG_LOCATION}/filebrowser/filebrowser.json:/.filebrowser.json
+      - ${CONFIG_LOCATION}/filebrowser/database.db:/database.db
+      - ${CONFIG_LOCATION}/filebrowser/filebrowser.json:/.filebrowser.json
       - ${CONFIG_LOCATION}/filebrowser/users.json:/users.json
     labels:
       - "traefik.docker.network=main"
