@@ -16,18 +16,6 @@ services:
       - traefik.frontend.auth.forward.trustForwardHeader=true
     networks:
       - main
-  # jackett:
-  #   extends: 
-  #     file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-  #     service: jackett
-  #   labels:
-  #     - "traefik.docker.network=main"
-  #     - "traefik.enable=true"
-  #     - "traefik.basic.frontend.rule=Host:jackett.${DOMAIN_URL}"
-  #     - "traefik.basic.port=9117"
-  #     - "traefik.frontend.entryPoints=http,https"
-  #   networks:
-  #     - main
   
   plex:
     extends: 
@@ -50,36 +38,6 @@ services:
       - "${FILEBROWSER_HOME}:/home"
     networks:
       - main
-  
-  # sonarr:
-  #   extends: 
-  #     file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-  #     service: sonarr
-  #   labels:
-  #     - "traefik.docker.network=main"
-  #     - "traefik.enable=true"
-  #     - "traefik.basic.frontend.rule=Host:sonarr.${DOMAIN_URL}"
-  #     - "traefik.basic.port=8989"
-  #     - "traefik.frontend.entryPoints=http,https"
-  #     - "traefik.backend.healthcheck.path=/api/system/status?apikey=${SONARR_API_KEY}"
-  #     - "traefik.backend.healthcheck.interval=30s"
-  #   networks:
-  #     - main
-  
-  # radarr:
-  #   extends: 
-  #     file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-  #     service: radarr
-  #   labels:
-  #     - "traefik.docker.network=main"
-  #     - "traefik.enable=true"
-  #     - "traefik.basic.frontend.rule=Host:radarr.${DOMAIN_URL}"
-  #     - "traefik.basic.port=7878"
-  #     - "traefik.frontend.entryPoints=http,https"
-  #     - "traefik.backend.healthcheck.path=/api/system/status?apikey=${RADARR_API_KEY}"
-  #     - "traefik.backend.healthcheck.interval=30s"
-  #   networks:
-  #     - main
 
 networks:
   main:
