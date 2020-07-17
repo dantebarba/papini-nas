@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       FB_DATABASE: /data/database.db
-    entrypoint: /bin/sh -c "if [ ! -f $$FB_DATABASE ]; then /filebrowser config import; fi;/filebrowser config set --auth.method=proxy --auth.header=X-Forwarded-User && /filebrowser users update admin --username=${FILEBROWSER_ADMIN}"
+    entrypoint: /bin/sh -c "if [ ! -f $$FB_DATABASE ]; then /filebrowser config import /.filebrowser.json; fi;/filebrowser config set --auth.method=proxy --auth.header=X-Forwarded-User && /filebrowser users update admin --username=${FILEBROWSER_ADMIN}"
     volumes:
       - ${FILEBROWSER_HOME}:/srv
       - ${CONFIG_LOCATION}/filebrowser/data:/data
