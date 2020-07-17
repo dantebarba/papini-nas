@@ -5,7 +5,6 @@ services:
     container_name: filebrowser
     image: filebrowser/filebrowser:v2-debian
     restart: unless-stopped
-    environment:
     # entrypoint: /bin/sh -c "if [ ! -f $$FB_DATABASE ]; then /filebrowser config import /.filebrowser.json; fi;/filebrowser config set --auth.method=proxy --auth.header=X-Forwarded-User && /filebrowser users update admin --username=${FILEBROWSER_ADMIN}"
     volumes:
       - ${FILEBROWSER_HOME}:/srv
