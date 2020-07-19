@@ -1,35 +1,19 @@
-version: '2'
+version: '3.3'
 
 services:
-  logio:
-    image: blacklabelops/logio
-    restart: unless-stopped
-    container_name: logio
-    environment:
-      LOGIO_ADMIN_USER: admin
-      LOGIO_ADMIN_PASSWORD: ${LOGIO_ADMIN_PASSWORD}
-    networks:
-      - main
-    labels:
-      - "traefik.docker.network=main"
-      - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:logs.${DOMAIN_URL}"
-      - "traefik.basic.port=28778"
-      - "traefik.frontend.entryPoints=http,https"
-
   logio-harvester:
     image: blacklabelops/logio
-    container_name: logio-harvester
-    user: root
+    container_name: harvester
     command: harvester
+    user: root
     environment:
-      LOG_FILE_PATTERN: '*-json.log'
-      LOGS_DIRECTORIES: '/var/lib/docker/containers'
+      - "LOGIO_HARVESTER_MASTER_HOST=${LOGIO_MASTER_HOST}"
+      - "LOGIO_HARVESTER_MASTER_PORT=443"
+      - 'DELAYED_START=30'
+      - 'LOGIO_HARVESTER_NODENAME=DockerLogs-${DOMAIN_URL}'
+      - 'LOGIO_HARVESTER_STREAMNAME=UnifiedLogs-${DOMAIN_URL}'
+      - "LOG_FILE_PATTERN=*-json.log"
+      - "LOGS_DIRECTORIES=/var/lib/docker/containers"
     volumes:
-      - ${DOCKER_LOCATION}/containers:/var/lib/docker/containers
-    networks:
-      - main
-
-networks: 
-  main:
-    external: true
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - /var/run/docker.sock:/var/run/docker.sock:ro
