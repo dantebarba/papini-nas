@@ -22,4 +22,5 @@ services:
       CUPS_ENV_HOST: papini.local
     volumes:
       - /dev/bus/usb:/dev/bus/usb
+      - ${CONFIG_LOCATION}/cloudprint/cupsd:/etc/cups/
     
