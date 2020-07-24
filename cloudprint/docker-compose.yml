@@ -8,6 +8,8 @@ services:
     environment:
       - PUID=1000
       - PGID=999
+    ports:
+      - 631:631
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/dbus:/var/run/dbus
