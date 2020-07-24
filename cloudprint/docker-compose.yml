@@ -9,7 +9,7 @@ services:
     cap_add:
       - SYS_ADMIN
     ports:
-      - 137:137/udp
+      # - 137:137/udp
       # - 139:139/tcp
       # - 445:445/tcp
       - 631:631/tcp
