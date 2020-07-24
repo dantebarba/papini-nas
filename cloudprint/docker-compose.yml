@@ -15,7 +15,6 @@ services:
   cupsd:
     image: olbat/cupsd
     container_name: cupsd
-    user: root
     privileged: true
     volumes:
       - /var/run/dbus:/var/run/dbus
