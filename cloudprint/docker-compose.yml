@@ -16,6 +16,7 @@ services:
     image: olbat/cupsd
     container_name: cupsd
     privileged: true
+    restart: unless-stopped
     volumes:
       - /var/run/dbus:/var/run/dbus
     ports:
