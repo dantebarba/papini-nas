@@ -1,9 +1,9 @@
 version: '3.3'
 
 services:
-  google-cloudprint:
+  cloudprint:
     image: jaymoulin/google-cloudprint
-    container_name: google-cloudprint
+    container_name: cloudprint
     privileged: true
     restart: unless-stopped
     environment:
