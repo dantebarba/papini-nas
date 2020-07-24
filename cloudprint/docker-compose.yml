@@ -11,7 +11,7 @@ services:
     ports:
       - 137:137/udp
       - 139:139/tcp
-      - 445:445/tcp
+      # - 445:445/tcp
       - 631:631/tcp
       # - 5353:5353/udp
     environment:
