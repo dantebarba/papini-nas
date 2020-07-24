@@ -11,7 +11,6 @@ services:
       CUPS_USER_PASSWORD: ${CUPS_USER_PASSWORD}
     volumes:
       - /dev/bus/usb:/dev/bus/usb
-      - ${CONFIG_LOCATION}/cloudprint/.cloudprintauth.json:/root/.cloudprintauth.json
     ports:
       - 631:631
     
