@@ -1,24 +1,17 @@
 version: '3.3'
 
 services:
-  cloudprint:
-    image: tianon/google-cloud-print-connector
-    container_name: cloudprint
-    user: 1000:1000
-    volumes:
-      - /var/run/dbus:/var/run/dbus:ro
-      - ${CONFIG_LOCATION}/cloudprint:/config
-    network_mode: host
-    command: "gcp-cups-connector --log-to-console"
-    working_dir: /config
-
-  cupsd:
-    image: olbat/cupsd
-    container_name: cupsd
+  google-cloudprint:
+    image: jaymoulin/google-cloudprint
     privileged: true
     restart: unless-stopped
+    environment:
+      CUPS_USER_ADMIN: ${CUPS_USER_ADMIN}
+      CUPS_USER_PASSWORD: ${CUPS_USER_PASSWORD}
     volumes:
-      - /var/run/dbus:/var/run/dbus
+      - /dev/bus/usb:/dev/bus/usb
+      - ${CONFIG_LOCATION}/cloudprint/.cloudprintauth.json:/root/.cloudprintauth.json
+      - ${CONFIG_LOCATION}/cloudprint/cups:/etc/cups
     ports:
       - 631:631
     
