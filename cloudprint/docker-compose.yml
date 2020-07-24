@@ -7,5 +7,24 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/dbus:/var/run/dbus
-    ports:
-      - 631:631
+    networks:
+      - main
+    labels:
+      - "traefik.docker.network=main"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:printer.${DOMAIN_URL}"
+      - "traefik.basic.port=631"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}"
+      - "traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User"
+      - "traefik.frontend.auth.forward.trustForwardHeader=true"
+      - traefik.frontend.headers.frameDeny=false
+      - traefik.frontend.headers.browserXSSFilter=true
+      - traefik.frontend.headers.isDevelopment=false
+      - traefik.frontend.headers.STSSeconds=315360000
+      - traefik.frontend.headers.forceSTSHeader=false
+      - traefik.frontend.headers.contentTypeNosniff=true
+
+networks: 
+  main:
+    external: true
