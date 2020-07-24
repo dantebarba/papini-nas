@@ -5,12 +5,21 @@ services:
     container_name: cupsd
     privileged: true
     restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=999
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /var/run/dbus:/var/run/dbus
+      - /dev/bus/usb:/dev/bus/usb
+      - network-cupsd-config:/etc/cups
     networks:
       - main
     labels:
       - "traefik.docker.network=main"
+      - traefik.backend=network-cupsd
+      - traefik.protocol=https
+      - traefik.passHostHeader=true
       - "traefik.enable=true"
       - "traefik.basic.frontend.rule=Host:printer.${DOMAIN_URL}"
       - "traefik.basic.port=631"
@@ -28,3 +37,6 @@ services:
 networks: 
   main:
     external: true
+
+volumes:
+  network-cupsd-config:
