@@ -3,6 +3,7 @@ version: '3.3'
 services:
   google-cloudprint:
     image: jaymoulin/google-cloudprint
+    container_name: google-cloudprint
     privileged: true
     restart: unless-stopped
     environment:
@@ -11,7 +12,6 @@ services:
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - ${CONFIG_LOCATION}/cloudprint/.cloudprintauth.json:/root/.cloudprintauth.json
-      - ${CONFIG_LOCATION}/cloudprint/cups:/etc/cups
     ports:
       - 631:631
     
