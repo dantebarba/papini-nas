@@ -1,17 +1,25 @@
 version: '3.3'
 
 services:
-  cloudprint:
-    image: jaymoulin/google-cloudprint
-    container_name: cloudprint
+  cupsd:
+    image: thbe/cups
+    container_name: cupsd
     privileged: true
     restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    ports:
+      - 137:137/udp
+      - 139:139/tcp
+      - 445:445/tcp
+      - 631:631/tcp
+      - 5353:5353/udp
     environment:
       TZ: America/Argentina/Buenos_Aires
-      CUPS_USER_ADMIN: ${CUPS_USER_ADMIN}
-      CUPS_USER_PASSWORD: ${CUPS_USER_PASSWORD}
+      container: docker
+      CUPS_ENV_PASSWORD: ${CUPS_USER_PASSWORD}
+      CUPS_ENV_DEBUG: 'true'
+      CUPS_ENV_HOST: papini.local
     volumes:
       - /dev/bus/usb:/dev/bus/usb
-    ports:
-      - 631:631
     
