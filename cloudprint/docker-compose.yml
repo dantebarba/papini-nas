@@ -11,3 +11,13 @@ services:
     network_mode: host
     command: "gcp-cups-connector --log-to-console"
     working_dir: /config
+
+  cupsd:
+    image: olbat/cupsd
+    container_name: cupsd
+    user: root
+    volumes:
+      - /var/run/dbus:/var/run/dbus
+    ports:
+      - 631:631
+    
