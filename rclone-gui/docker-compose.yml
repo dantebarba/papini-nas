@@ -8,7 +8,7 @@ services:
     command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user test --rc-pass test
     volumes:
       - "${STORAGE_LOCATION}/rclone-union-test/union:/union"
-      - "${STORAGE_LOCATION}/rclone-union-test/drive:/drive"
+      - "${STORAGE_LOCATION}/rclone-union-test/drive:/drive:shared"
       - "${CONFIG_LOCATION}/rclone:/config/rclone"
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
       - "${CONFIG_LOCATION}/rclone/logs_gui:/logs"
@@ -17,7 +17,7 @@ services:
       PUID: 1000
       PGID: 1000
     devices:
-      - /dev/fuse
+      - fuse
     cap_add:
       - SYS_ADMIN
     networks:
