@@ -5,7 +5,6 @@ services:
     image: rclone/rclone:latest
     container_name: rclone-gui
     restart: unless-stopped
-    privileged: true
     command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user test --rc-pass test
     volumes:
       - "${STORAGE_LOCATION}/rclone-union-test/union:/union"
@@ -21,7 +20,6 @@ services:
       - /dev/fuse
     cap_add:
       - SYS_ADMIN
-      - MKNOD
     networks:
       - main
     labels:
