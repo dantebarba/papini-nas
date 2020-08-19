@@ -17,7 +17,7 @@ services:
       PUID: 1000
       PGID: 1000
     devices:
-      - fuse
+      - /dev/fuse
     cap_add:
       - SYS_ADMIN
     networks:
