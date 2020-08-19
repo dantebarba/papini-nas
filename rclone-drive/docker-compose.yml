@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  rclone-gui:
+    image: rclone/rclone:latest
+    container_name: rclone-gui
+    restart: unless-stopped
+    command: rcd --rc-web-gui --rc-addr :5572 --rc-user test --rc-pass test
+    volumes:
+      - "${STORAGE_LOCATION}/radarr/movies:/destination"
+      - "${CONFIG_LOCATION}/rclone:/config/rclone"
+      - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
+      - "${CONFIG_LOCATION}/rclone/logs_gui:/logs"
+    environment:
+      PHP_TZ: America/Argentina/Buenos_Aires
+      PUID: 1000
+      PGID: 1000
+    networks:
+      - main
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5572"
+      - "traefik.backend=rclone"
+      - "traefik.docker.network=main"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.rule=Host:rclone.${DOMAIN_URL}"
+      - traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}
+      - traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User
+      - traefik.frontend.auth.forward.trustForwardHeader=true
+
+networks:
+  main:
+    external: true
