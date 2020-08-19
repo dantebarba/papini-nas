@@ -6,7 +6,7 @@ services:
     container_name: vs-code
     command: " --auth none"
     volumes:
-      - $HOME/papini-nas:/home/papini-nas
+      - $HOME/papini-nas:/home/coder/papini-nas
     networks:
       - main
     labels:
