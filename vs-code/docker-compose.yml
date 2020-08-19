@@ -5,7 +5,7 @@ services:
     image: codercom/code-server:latest
     container_name: vs-code
     command: " --auth none"
-    privileged: true
+    user: root
     volumes:
       - $HOME/papini-nas:/home/coder/papini-nas
     networks:
