@@ -4,6 +4,7 @@ services:
   vs-code:
     image: codercom/code-server:latest
     container_name: vs-code
+    command: " --auth none"
     volumes:
       - $HOME/papini-nas:/home/papini-nas
     networks:
