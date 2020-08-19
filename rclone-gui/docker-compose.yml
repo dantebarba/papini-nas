@@ -7,7 +7,8 @@ services:
     restart: unless-stopped
     command: rcd --rc-web-gui --rc-addr :5572 --rc-user test --rc-pass test
     volumes:
-      - "${STORAGE_LOCATION}/rclone-union-test:/union"
+      - "${STORAGE_LOCATION}/rclone-union-test/union:/union"
+      - "${STORAGE_LOCATION}/rclone-union-test/drive:/drive"
       - "${CONFIG_LOCATION}/rclone:/config/rclone"
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
       - "${CONFIG_LOCATION}/rclone/logs_gui:/logs"
