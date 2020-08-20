@@ -17,17 +17,8 @@ services:
       USER_PASSWORD: ${VFS_PASSWORD}
       SUDO_ACCESS: 'false'
       PASSWORD_ACCESS: 'true'
-    labels:
-      - "traefik.docker.network=main"
-      - "traefik.enable=true"
-      - traefik.backend=vfs
-      - "traefik.basic.frontend.rule=Host:vfs.${DOMAIN_URL}"
-      - "traefik.basic.port=80"
-      - "traefik.frontend.entryPoints=http,https"
-      - "traefik.frontend.headers.SSLRedirect=true"
-      - traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}
-      - traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User
-      - traefik.frontend.auth.forward.trustForwardHeader=true
+    ports:
+      - 2222:2222
     networks:
       - main
 
