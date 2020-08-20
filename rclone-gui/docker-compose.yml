@@ -5,7 +5,7 @@ services:
     image: rclone/rclone:latest
     container_name: rclone-gui
     restart: unless-stopped
-    command: rcd --rc-serve --rc-web-gui-no-open-browser --rc-addr :5572
+    command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572
     volumes:
       - "${CONFIG_LOCATION}/rclone:/config/rclone"
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
