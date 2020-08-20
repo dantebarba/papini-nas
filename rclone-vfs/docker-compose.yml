@@ -6,10 +6,10 @@ services:
     container_name: rclone-vfs
     restart: unless-stopped
     privileged: true
-    command: mount Crown:/movies /movies --dir-perms 755 --file-perms 755  --gid ${PGID} --uid ${PUID} --allow-other --buffer-size 32M --poll-interval 1m --log-file=/config/rclone/rclone.log --log-level=DEBUG
+    command: mount Crown:/movies /movies --dir-perms 755 --file-perms 755  --gid ${PGID} --uid ${PUID} --allow-other --buffer-size 32M --poll-interval 1m --log-file=/config/rclone/logs_vfs/rclone.log --log-level=DEBUG
     volumes:
       - "${STORAGE_LOCATION}/radarr/movies/remote:/movies:shared"
-      - "${STORAGE_LOCATION}/rclone-vfs:/config/rclone"
+      - "${CONFIG_LOCATION}/rclone:/config/rclone"
     environment:
       PHP_TZ: America/Argentina/Buenos_Aires
       PUID: 1000
