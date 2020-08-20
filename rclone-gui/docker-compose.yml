@@ -5,21 +5,14 @@ services:
     image: rclone/rclone:latest
     container_name: rclone-gui
     restart: unless-stopped
-    command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user test --rc-pass test
+    command: mount --rc-serve --rc-web-gui-no-open-browser --rc-addr :5572
     volumes:
-      - "${STORAGE_LOCATION}/rclone-union-test/union:/union"
-      - "${STORAGE_LOCATION}/rclone-union-test/drive:/drive:shared"
       - "${CONFIG_LOCATION}/rclone:/config/rclone"
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
-      - "${CONFIG_LOCATION}/rclone/logs_gui:/logs"
     environment:
       PHP_TZ: America/Argentina/Buenos_Aires
       PUID: 1000
       PGID: 1000
-    devices:
-      - /dev/fuse
-    cap_add:
-      - SYS_ADMIN
     networks:
       - main
     labels:

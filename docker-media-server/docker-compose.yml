@@ -16,6 +16,7 @@ services:
       - traefik.frontend.auth.forward.trustForwardHeader=true
     networks:
       - main
+
   radarr:
     extends: 
       file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
@@ -28,14 +29,17 @@ services:
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:transmission.${DOMAIN_URL}"
-      - "traefik.basic.port=9091"
+      - "traefik.basic.frontend.rule=Host:radarr.${DOMAIN_URL}"
+      - traefik.backend=radarr
+      - "traefik.basic.port=7878"
       - "traefik.frontend.entryPoints=http,https"
       - traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}
       - traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User
       - traefik.frontend.auth.forward.trustForwardHeader=true
     networks:
       - main
+
+
   plex:
     extends: 
       file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
