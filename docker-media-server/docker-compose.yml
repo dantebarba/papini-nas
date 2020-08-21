@@ -24,7 +24,7 @@ services:
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "${STORAGE_LOCATION}/radarr/config:/config"
-      - "${STORAGE_LOCATION}/radarr-test/movies:/movies"
+      - "${STORAGE_LOCATION}/radarr/movies:/movies"
       - "${STORAGE_LOCATION}/transmission/downloads:/downloads"
     labels:
       - "traefik.docker.network=main"
