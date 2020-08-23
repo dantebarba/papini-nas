@@ -91,6 +91,21 @@ services:
     networks:
       - main
 
+  syncarr:
+      image: syncarr/syncarr:latest
+      container_name: syncarr
+      restart: unless-stopped
+      environment:
+          RADARR_A_URL: https://radarr.dantebarba.com.ar:443
+          RADARR_A_KEY: ${REMOTE_RADARR_API_KEY}
+          RADARR_B_URL: http://radarr:7878
+          RADARR_B_KEY: ${LOCAL_RADARR_API_KEY}
+          RADARR_B_PROFILE: 1080p
+          RADARR_B_PATH: /data/movies
+          SYNC_INTERVAL_SECONDS: 300
+      networks:
+        - main
+
 networks:
   main:
     external: true
