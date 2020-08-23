@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  docker-vfs:
+      image: rclone/rclone:beta
+      container_name: docker-vfs
+      restart: unless-stopped
+      privileged: true
+      command: mount Crown-vfs:/vfs /vfs --dir-perms 755 --file-perms 755  --gid ${PGID} --uid ${PUID} --allow-other --buffer-size 32M --poll-interval 1m --log-file=/config/rclone/logs_vfs/rclone.log -vvvv
+      volumes:
+        - "${STORAGE_LOCATION}/vfs-test/vfs:/vfs:shared"
+        - "${CONFIG_LOCATION}/rclone:/config/rclone"
+      environment:
+        PUID: 1000
+        PGID: 1000
+      devices:
+        - /dev/fuse
+      cap_add:
+        - SYS_ADMIN
