@@ -26,7 +26,6 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "${STORAGE_LOCATION}/radarr/config:/config"
       - "${STORAGE_LOCATION}/radarr/movies:/movies"
-      - "${STORAGE_LOCATION}/rclone-vfs/vfs:/vfs"
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
@@ -50,7 +49,6 @@ services:
      - "${STORAGE_LOCATION}/sonarr/config:/config"
      - "${STORAGE_LOCATION}/sonarr/tvseries:/tv"
      - "${STORAGE_LOCATION}/transmission/downloads:/downloads"
-     - "${STORAGE_LOCATION}/rclone-vfs/vfs:/vfs"
     environment:
      - PUID=${PUID}
      - PGID=${PGID}
