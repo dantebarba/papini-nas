@@ -18,9 +18,10 @@ services:
       - main
 
   radarr:
-    extends: 
-      file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
-      service: radarr
+    image: "linuxserver/radarr"
+    container_name: radarr
+    hostname: radarr
+    restart: unless-stopped
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "${STORAGE_LOCATION}/radarr/config:/config"
@@ -33,6 +34,34 @@ services:
       - traefik.backend=radarr
       - "traefik.basic.port=7878"
       - "traefik.frontend.entryPoints=http,https"
+      - traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}
+      - traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User
+      - traefik.frontend.auth.forward.trustForwardHeader=true
+    networks:
+      - main
+
+  sonarr:
+    image: "linuxserver/sonarr"
+    container_name: sonarr
+    hostname: sonarr
+    restart: unless-stopped
+    volumes:
+     - "/etc/localtime:/etc/localtime:ro"
+     - "${STORAGE_LOCATION}/sonarr/config:/config"
+     - "${STORAGE_LOCATION}/sonarr/tvseries:/tv"
+     - "${STORAGE_LOCATION}/transmission/downloads:/downloads"
+     - "${STORAGE_LOCATION}/rclone-vfs/vfs:/vfs"
+    environment:
+     - PUID=${PUID}
+     - PGID=${PGID}
+     - VIRTUAL_HOST=sonarr.${DOMAIN_URL}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=main"
+      - "traefik.port=8989"
+      - "traefik.backend=sonarr"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.rule=Host:sonarr.${DOMAIN_URL}"
       - traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}
       - traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User
       - traefik.frontend.auth.forward.trustForwardHeader=true
