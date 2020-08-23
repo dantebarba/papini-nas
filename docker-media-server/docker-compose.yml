@@ -26,6 +26,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "${STORAGE_LOCATION}/radarr/config:/config"
       - "${STORAGE_LOCATION}/radarr/movies:/movies"
+      - ${STORAGE_LOCATION}/library/movies:/4k
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
