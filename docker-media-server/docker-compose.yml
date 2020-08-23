@@ -98,12 +98,18 @@ services:
       volumes:
         - "${STORAGE_LOCATION}/radarr/movies:/movies"
       environment:
-        RADARR_A_URL: https://radarr.dantebarba.com.ar:443
+        RADARR_A_URL: ${RADARR_URL}
         RADARR_A_KEY: ${REMOTE_RADARR_API_KEY}
         RADARR_B_URL: http://radarr:7878
         RADARR_B_KEY: ${LOCAL_RADARR_API_KEY}
         RADARR_B_PROFILE: Any
         RADARR_B_PATH: /movies
+        SONARR_A_URL: ${SONARR_URL}
+        SONARR_A_KEY: ${REMOTE_SONARR_API_KEY}
+        SONARR_B_URL: http://127.0.0.1:8080
+        SONARR_B_KEY: ${LOCAL_SONARR_API_KEY}
+        SONARR_B_PROFILE: Any
+        SONARR_B_PATH: /tv
         SYNC_INTERVAL_SECONDS: 300
       networks:
         - main
