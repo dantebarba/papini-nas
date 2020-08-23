@@ -6,7 +6,7 @@ services:
       container_name: docker-vfs
       restart: unless-stopped
       privileged: true
-      command: mount Crown-vfs /data  --gid ${PGID} --uid ${PUID} --allow-other --log-file=/config/rclone/logs_vfs/rclone.log -vvvv
+      command: mount Crown-vfs /vfs  --gid ${PGID} --uid ${PUID} --allow-other --log-file=/config/rclone/logs_vfs/rclone.log -vvvv
       volumes:
         - "${STORAGE_LOCATION}/vfs-test/vfs:/vfs:shared"
         - "${CONFIG_LOCATION}/rclone:/config/rclone"
