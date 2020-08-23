@@ -5,6 +5,8 @@ services:
     extends: 
       file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
       service: transmission
+    environment:
+      - TZ=America/Argentina/Buenos_Aires
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
@@ -27,6 +29,11 @@ services:
       - "${STORAGE_LOCATION}/radarr/config:/config"
       - "${STORAGE_LOCATION}/radarr/movies:/movies"
       - ${STORAGE_LOCATION}/library/movies:/4k
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=America/Argentina/Buenos_Aires
+      - VIRTUAL_HOST=radarr.${DOMAIN_URL}
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
@@ -54,6 +61,7 @@ services:
      - PUID=${PUID}
      - PGID=${PGID}
      - VIRTUAL_HOST=sonarr.${DOMAIN_URL}
+     - TZ=America/Argentina/Buenos_Aires
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=main"
@@ -104,6 +112,7 @@ services:
         RADARR_B_PROFILE: Any
         RADARR_B_PATH: /movies
         SYNC_INTERVAL_SECONDS: 300
+        TZ: America/Argentina/Buenos_Aires
       networks:
         - main
     
@@ -121,6 +130,7 @@ services:
         SONARR_B_PROFILE: Any
         SONARR_B_PATH: /tv
         SYNC_INTERVAL_SECONDS: 300
+        TZ: America/Argentina/Buenos_Aires
       networks:
         - main
 
