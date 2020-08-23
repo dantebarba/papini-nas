@@ -104,6 +104,17 @@ services:
         RADARR_B_KEY: ${LOCAL_RADARR_API_KEY}
         RADARR_B_PROFILE: Any
         RADARR_B_PATH: /movies
+        SYNC_INTERVAL_SECONDS: 300
+      networks:
+        - main
+    
+  syncarr-sonarr:
+      image: syncarr/syncarr:latest
+      container_name: syncarr-sonarr
+      restart: unless-stopped
+      volumes:
+        - ${STORAGE_LOCATION}/sonarr/tvseries:/tv
+      environment:
         SONARR_A_URL: ${SONARR_URL}
         SONARR_A_KEY: ${REMOTE_SONARR_API_KEY}
         SONARR_B_URL: http://sonarr:8989
