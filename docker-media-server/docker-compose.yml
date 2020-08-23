@@ -96,14 +96,14 @@ services:
       container_name: syncarr
       restart: unless-stopped
       volumes:
-        - "${STORAGE_LOCATION}/radarr/movies:/data/movies"
+        - "${STORAGE_LOCATION}/radarr/movies:/movies"
       environment:
         RADARR_A_URL: https://radarr.dantebarba.com.ar:443
         RADARR_A_KEY: ${REMOTE_RADARR_API_KEY}
         RADARR_B_URL: http://radarr:7878
         RADARR_B_KEY: ${LOCAL_RADARR_API_KEY}
         RADARR_B_PROFILE: Any
-        RADARR_B_PATH: /data/movies
+        RADARR_B_PATH: /movies
         SYNC_INTERVAL_SECONDS: 300
       networks:
         - main
