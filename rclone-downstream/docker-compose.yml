@@ -14,7 +14,7 @@ services:
       SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/radarr/movies/local
       SYNC_DEST: /destination
       SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
-      CHECK_URL: https://hc-ping.com/98faf6af-1722-4e39-8d5f-5f2eb6f8bb34
+      CHECK_URL: ${MOVIES_CHECK_URL}
       RCLONE_DIR_CHECK_SKIP: 'true'
       RCLONE_CMD: move
       FORCE_SYNC: ${FORCE_SYNC}
@@ -39,7 +39,7 @@ services:
       SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/sonarr/tvseries
       SYNC_DEST: /destination
       SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
-      CHECK_URL: https://hc-ping.com/0b507d80-79fb-4b61-a211-227c11c98909
+      CHECK_URL: ${SERIES_CHECK_URL}
       RCLONE_DIR_CHECK_SKIP: 'true'
       RCLONE_CMD: move
       TZ: ${DOCKER_TZ}
@@ -65,7 +65,7 @@ services:
       SYNC_DEST: /destination
       SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
       RCLONE_DIR_CHECK_SKIP: 'true'
-      CHECK_URL: 'https://hc-ping.com/5610a3b0-f036-41d0-8a3d-260b2b4b57ce'
+      CHECK_URL: ${MUSIC_CHECK_URL}
       RCLONE_CMD: move
       TZ: ${DOCKER_TZ}
       CRON: '0 3 * * *'
