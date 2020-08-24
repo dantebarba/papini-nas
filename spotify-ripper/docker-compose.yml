@@ -21,8 +21,8 @@ services:
     container_name: spotify-cron
     restart: unless-stopped
     environment:
-      CHECK_URL: 'https://hc-ping.com/2fb23522-d734-4cb9-9eb8-63633ca211d5'
-      TZ: 'America/Argentina/Buenos_Aires'
+      CHECK_URL: ${SPOTIFY_CRON_CHECK}
+      TZ: ${DOCKER_TZ}
       CRON: '*/40 5-8 * * *'
       TEST_URL: 'http://spotify-ripper-web:5000/api/v1/${SPOTIFY_PLAYLIST}'
       LOG_LEVEL: '7'
