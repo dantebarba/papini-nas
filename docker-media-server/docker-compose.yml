@@ -111,6 +111,7 @@ services:
         RADARR_B_KEY: ${LOCAL_RADARR_API_KEY}
         RADARR_B_PROFILE: Any
         RADARR_B_PATH: /movies
+        SYNCARR_AUTO_SEARCH: 0
         SYNC_INTERVAL_SECONDS: 300
         TZ: America/Argentina/Buenos_Aires
       networks:
@@ -129,6 +130,7 @@ services:
         SONARR_B_KEY: ${LOCAL_SONARR_API_KEY}
         SONARR_B_PROFILE: Any
         SONARR_B_PATH: /tv
+        SYNCARR_AUTO_SEARCH: 0
         SYNC_INTERVAL_SECONDS: 300
         TZ: America/Argentina/Buenos_Aires
       networks:
