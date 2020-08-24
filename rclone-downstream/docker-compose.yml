@@ -6,7 +6,7 @@ services:
     container_name: movies-downstream
     restart: unless-stopped
     volumes:
-      - "${STORAGE_LOCATION}/radarr/movies/local:/destination"
+      - "${STORAGE_LOCATION}/radarr/movies:/destination"
       - "${CONFIG_LOCATION}/rclone:/config"
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
       - "${CONFIG_LOCATION}/rclone/logs_movies:/tmp/"
