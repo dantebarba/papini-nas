@@ -4,8 +4,6 @@ services:
   nessus:
     image: stevemcgrath/nessus_scanner:latest
     container_name: nessus
-    ports:
-      - 8443:443
     environment:
       LICENSE: ${NESSUS_LICENSE}
       SCANNER_NAME: ${NESSUS_SCANNER_NAME}
