@@ -10,6 +10,7 @@
 /bin/sync && /bin/echo 3 | /usr/bin/tee /proc/sys/vm/drop_caches
 
 # logs cleaning
+/usr/bin/docker system prune --force
 
 # docker clean up
 /usr/bin/curl --silent https://gist.githubusercontent.com/macropin/3d06cd315a07c9d8530f/raw | /bin/bash -s rm-dangling
