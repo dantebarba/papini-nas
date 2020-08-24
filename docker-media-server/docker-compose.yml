@@ -6,7 +6,7 @@ services:
       file: ${DOCKER_MEDIA_SERVER}/docker-compose.yml
       service: transmission
     environment:
-      - TZ=America/Argentina/Buenos_Aires
+      - TZ=${DOCKER_TZ}
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"
@@ -32,7 +32,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
-      - TZ=America/Argentina/Buenos_Aires
+      - TZ=${DOCKER_TZ}
       - VIRTUAL_HOST=radarr.${DOMAIN_URL}
     labels:
       - "traefik.docker.network=main"
@@ -61,7 +61,7 @@ services:
      - PUID=${PUID}
      - PGID=${PGID}
      - VIRTUAL_HOST=sonarr.${DOMAIN_URL}
-     - TZ=America/Argentina/Buenos_Aires
+     - TZ=${DOCKER_TZ}
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=main"
