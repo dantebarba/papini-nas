@@ -11,7 +11,7 @@ services:
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
       - "${CONFIG_LOCATION}/rclone/logs_movies:/tmp/"
     environment:
-      SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/radarr/movies/local
+      SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/radarr/movies
       SYNC_DEST: /destination
       SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
       CHECK_URL: ${MOVIES_CHECK_URL}
@@ -45,31 +45,6 @@ services:
       TZ: ${DOCKER_TZ}
       CRON: '0 3 * * *'
       CRON_ABORT: '0 10 * * *'
-      UID: ${PUID}
-      GID: ${PGID}
-      FORCE_SYNC: ${FORCE_SYNC}
-    networks:
-      - main
-
-  music-downstream:
-    image: pfidr/rclone:latest
-    container_name: music-downstream
-    restart: unless-stopped
-    volumes:
-      - "${STORAGE_LOCATION}/deezldr/music:/destination"
-      - "${CONFIG_LOCATION}/rclone:/config"
-      - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
-      - "${CONFIG_LOCATION}/rclone/logs_music:/tmp/"
-    environment:
-      SYNC_SRC: Crown:${REMOTE_STORAGE_LOCATION}/deezldr/music
-      SYNC_DEST: /destination
-      SYNC_OPTS: '-v --min-age ${MIN_AGE} --delete-empty-src-dirs'
-      RCLONE_DIR_CHECK_SKIP: 'true'
-      CHECK_URL: ${MUSIC_CHECK_URL}
-      RCLONE_CMD: move
-      TZ: ${DOCKER_TZ}
-      CRON: '0 3 * * *'
-      CRON_ABORT: '0 6 * * *'
       UID: ${PUID}
       GID: ${PGID}
       FORCE_SYNC: ${FORCE_SYNC}
