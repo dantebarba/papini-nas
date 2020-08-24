@@ -18,7 +18,7 @@ services:
       RCLONE_DIR_CHECK_SKIP: 'true'
       RCLONE_CMD: move
       FORCE_SYNC: ${FORCE_SYNC}
-      TZ: 'America/Argentina/Buenos_Aires'
+      TZ: ${DOCKER_TZ}
       CRON: '0 3 * * *'
       CRON_ABORT: '0 10 * * *'
       UID: ${PUID}
@@ -42,7 +42,7 @@ services:
       CHECK_URL: ${SERIES_CHECK_URL}
       RCLONE_DIR_CHECK_SKIP: 'true'
       RCLONE_CMD: move
-      TZ: 'America/Argentina/Buenos_Aires'
+      TZ: ${DOCKER_TZ}
       CRON: '0 3 * * *'
       CRON_ABORT: '0 10 * * *'
       UID: ${PUID}
@@ -67,7 +67,7 @@ services:
       RCLONE_DIR_CHECK_SKIP: 'true'
       CHECK_URL: ${MUSIC_CHECK_URL}
       RCLONE_CMD: move
-      TZ: 'America/Argentina/Buenos_Aires'
+      TZ: ${DOCKER_TZ}
       CRON: '0 3 * * *'
       CRON_ABORT: '0 6 * * *'
       UID: ${PUID}

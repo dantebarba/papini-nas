@@ -113,7 +113,7 @@ services:
         RADARR_B_PATH: /movies
         SYNCARR_AUTO_SEARCH: 0
         SYNC_INTERVAL_SECONDS: 300
-        TZ: America/Argentina/Buenos_Aires
+        TZ: ${DOCKER_TZ}
       networks:
         - main
     
@@ -132,7 +132,7 @@ services:
         SONARR_B_PATH: /tv
         SYNCARR_AUTO_SEARCH: 0
         SYNC_INTERVAL_SECONDS: 300
-        TZ: America/Argentina/Buenos_Aires
+        TZ: ${DOCKER_TZ}
       networks:
         - main
 

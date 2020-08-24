@@ -6,6 +6,8 @@ services:
     container_name: netdata
     restart: unless-stopped
     hostname: papini.dantebarba.com.ar # set to fqdn of host
+    environment:
+      TZ: ${DOCKER_TZ}
     ports:
       - 19999:19999
     cap_add:

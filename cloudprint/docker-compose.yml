@@ -6,8 +6,9 @@ services:
     privileged: true
     restart: unless-stopped
     environment:
-      - PUID=1000
-      - PGID=999
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${DOCKER_TZ}
     ports:
       - 631:631
     volumes:

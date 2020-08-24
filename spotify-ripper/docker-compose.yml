@@ -11,6 +11,7 @@ services:
       SPOTIPY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
       SPOTIPY_REDIRECT_URI: http://www.purple.com
       STOP_AFTER: 35m
+      TZ: ${DOCKER_TZ}
     volumes:
       - "${SPOTIFY_RIPPER_CONFIG}:/config"
       - ${STORAGE_LOCATION}/spotify-ripper/music:/music

@@ -12,6 +12,7 @@ services:
       MANAGER_PORT: 443
       ADMIN_USER: ${NESSUS_USER}
       ADMIN_PASS: ${NESSUS_PASS}
+      TZ: ${DOCKER_TZ}
     volumes:
       - nessus:/opt/nessus
     labels:
