@@ -6,6 +6,8 @@ services:
     image: filebrowser/filebrowser:v2-debian
     restart: unless-stopped
     entrypoint: /bin/sh -c "if [ ! -f /data/database.db ]; then /filebrowser config import /.filebrowser.json;/filebrowser users import /users.json; fi;/filebrowser"
+    environment:
+      TZ: ${DOCKER_TZ}
     volumes:
       - ${FILEBROWSER_HOME}:/srv
       - ${CONFIG_LOCATION}/filebrowser/data:/data

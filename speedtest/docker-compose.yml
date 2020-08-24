@@ -4,6 +4,8 @@ services:
   speedtest:
     image: adolfintel/speedtest:latest
     container_name: speedtest
+    environment:
+      TZ: ${DOCKER_TZ}
     labels:
       - "traefik.enable=true"
       - "traefik.port=80"

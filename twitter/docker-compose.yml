@@ -9,6 +9,7 @@ services:
     environment:
       - NGINX_HOST=twitter.${DOMAIN_URL}
       - NGINX_PORT=80
+      - TZ=${DOCKER_TZ}
     labels:
       - "traefik.docker.network=main"
       - "traefik.enable=true"

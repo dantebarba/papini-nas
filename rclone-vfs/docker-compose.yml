@@ -12,9 +12,9 @@ services:
       - "${CONFIG_LOCATION}/rclone:/config/rclone"
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
     environment:
-      PHP_TZ: America/Argentina/Buenos_Aires
-      PUID: 1000
-      PGID: 1000
+      PHP_TZ: ${DOCKER_TZ}
+      PUID: ${PUID}
+      PGID: ${PGID}
     devices:
       - /dev/fuse
     cap_add:
