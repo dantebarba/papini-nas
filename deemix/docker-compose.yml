@@ -5,7 +5,7 @@ services:
         container_name: deemix
         volumes:
             - ${STORAGE_LOCATION}/deemix/music:/downloads
-            - ${STORAGE_LOCATINO}/deemix/config:/config
+            - ${STORAGE_LOCATION}/deemix/config:/config
         environment:
             - PUID=${PGID}
             - PGID=${PUID}
