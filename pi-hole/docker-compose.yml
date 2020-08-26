@@ -5,6 +5,7 @@ services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
+    hostname: ${HOSTNAME}
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -22,8 +23,6 @@ services:
     dns:
       - 127.0.0.1
       - 1.1.1.1
-    # Recommended but not required (DHCP needs NET_ADMIN)
-    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     restart: unless-stopped
     labels:
       - "traefik.docker.network=main"
@@ -31,6 +30,15 @@ services:
       - "traefik.basic.frontend.rule=Host:pihole.${DOMAIN_URL}"
       - "traefik.basic.port=80"
       - "traefik.frontend.entryPoints=https"
+      - "traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}"
+      - "traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User"
+      - "traefik.frontend.auth.forward.trustForwardHeader=true"
+      - traefik.frontend.headers.frameDeny=false
+      - traefik.frontend.headers.browserXSSFilter=true
+      - traefik.frontend.headers.isDevelopment=false
+      - traefik.frontend.headers.STSSeconds=315360000
+      - traefik.frontend.headers.forceSTSHeader=false
+      - traefik.frontend.headers.contentTypeNosniff=true
     networks:
       - main
 
