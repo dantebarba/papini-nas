@@ -54,7 +54,7 @@ services:
   rclone-diskscanner:
     image: rclone/rclone:latest
     container_name: rclone-diskscanner
-    command: rcd /config --rc-web-gui-no-open-browser --rc-user ${AUTH_USER} --rc-pass ${AUTH_PASS} --bind 0.0.0.0:5572
+    command: rcd /config --rc-web-gui-no-open-browser --rc-user ${AUTH_USER} --rc-pass ${AUTH_PASS} --bind :5572
     environment:
       AUTH_USER: ${AUTH_USER}
       AUTH_PASS: ${AUTH_PASS}
