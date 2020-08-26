@@ -54,7 +54,7 @@ services:
   rclone-diskscanner:
     image: rclone/rclone:latest
     container_name: rclone-diskscanner
-    command: rcd /config --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user ${RC_USER} --rc-pass ${RC_PASS}
+    command: rcd /config --rc-web-gui-no-open-browser --rc-addr :443 --rc-user ${RC_USER} --rc-pass ${RC_PASS}
     environment:
       AUTH_USER: ${RC_USER}
       AUTH_PASS: ${RC_PASS}
@@ -68,7 +68,7 @@ services:
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
     labels:
       - "traefik.enable=true"
-      - "traefik.port=5572"
+      - "traefik.port=443"
       - "traefik.backend=rclone"
       - "traefik.docker.network=main"
       - "traefik.frontend.entryPoints=http,https"
