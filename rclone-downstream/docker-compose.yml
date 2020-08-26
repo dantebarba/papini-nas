@@ -61,6 +61,8 @@ services:
       PHP_TZ: ${DOCKER_TZ}
       PUID: ${PUID}
       PGID: ${PGID}
+    networks:
+      - main
     volumes:
       - ${STORAGE_LOCATION}/radarr/movies:/movies
       - ${STORAGE_LOCATION}/sonarr/tvseries:/tv
