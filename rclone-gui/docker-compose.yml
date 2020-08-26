@@ -7,6 +7,8 @@ services:
     restart: unless-stopped
     command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user ${RC_USER} --rc-pass ${RC_PASS}
     volumes:
+      - ${STORAGE_LOCATION}/radarr/movies:/movies
+      - ${STORAGE_LOCATION}/sonarr/tvseries:/tv
       - "${CONFIG_LOCATION}/rclone:/config/rclone"
       - "${CONFIG_LOCATION}/rclone/ssh:/.ssh:ro"
     environment:
