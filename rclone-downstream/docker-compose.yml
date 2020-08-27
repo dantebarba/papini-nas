@@ -55,6 +55,7 @@ services:
     image: rclone/rclone:latest
     container_name: rclone-diskscanner
     command: rcd /config --rc-web-gui-no-open-browser --rc-addr :443 --rc-user ${RC_USER} --rc-pass ${RC_PASS}
+    restart: unless-stopped
     environment:
       AUTH_USER: ${RC_USER}
       AUTH_PASS: ${RC_PASS}
