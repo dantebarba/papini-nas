@@ -92,6 +92,7 @@ services:
       - "${STORAGE_LOCATION}/radarr/movies:/movies"
       - "${STORAGE_LOCATION}/deemix/music:/music"
       - "${STORAGE_LOCATION}/plex:/transcode"
+      - "/mnt/movies:/mnt/movies"
       - "${FILEBROWSER_HOME}:/home"
     networks:
       - main
