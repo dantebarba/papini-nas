@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+    scanservjs:
+        container_name: scanservjs
+        image: sbs20/scanservjs:latest
+        restart: unless-stopped
+        privileged: true
+        environment:
+            TZ: ${DOCKER_TZ}
+        volumes:
+            - /var/run/dbus:/var/run/dbus
+        labels:
+            - "traefik.docker.network=main"
+            - "traefik.enable=true"
+            - "traefik.basic.frontend.rule=Host:scan.${DOMAIN_URL}"
+            - "traefik.basic.port=8080"
+            - "traefik.frontend.entryPoints=http,https"
+            - "traefik.frontend.auth.forward.address=${OAUTH_FORWARD_URL}"
+            - "traefik.frontend.auth.forward.authResponseHeaders=X-Forwarded-User"
+            - "traefik.frontend.auth.forward.trustForwardHeader=true"
+            - traefik.frontend.headers.frameDeny=false
+            - traefik.frontend.headers.browserXSSFilter=true
+            - traefik.frontend.headers.isDevelopment=false
+            - traefik.frontend.headers.STSSeconds=315360000
+            - traefik.frontend.headers.forceSTSHeader=false
+            - traefik.frontend.headers.contentTypeNosniff=true
+        networks:
+            - main
+
+networks: 
+main:
+    external: true
+
+
