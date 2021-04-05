@@ -29,7 +29,7 @@ services:
             - main
 
 networks: 
-main:
-    external: true
+    main:
+        external: true
 
 
