@@ -8,8 +8,8 @@ services:
         privileged: true
         environment:
             TZ: ${DOCKER_TZ}
-        volumes:
-            - /var/run/dbus:/var/run/dbus
+        devices:
+            - /dev/bus/usb/001/009:/dev/bus/usb/001/009
         labels:
             - "traefik.docker.network=main"
             - "traefik.enable=true"
