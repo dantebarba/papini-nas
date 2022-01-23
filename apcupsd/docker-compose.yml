@@ -8,6 +8,7 @@ services:
     container_name: apcupsd
     environment:
       TZ: ${DOCKER_TZ}
+      APCUPSD_MAIL: mail
     volumes:
       - "/etc/timezone:/etc/timezone:ro"
       - "./mailwrapper.sh:/usr/local/sbin/mail"
