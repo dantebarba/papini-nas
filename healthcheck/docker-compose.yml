@@ -1,4 +1,4 @@
-version: '2'
+version: '3.7'
 
 services:
   nas-health-status:
@@ -9,19 +9,6 @@ services:
       CHECK_URL: ${CHECK_URL}
       TZ: ${DOCKER_TZ}
       CRON: ${HEALTHCHECK_CRON}
-      LOG_LEVEL: ${LOG_LEVEL}
-      FORCE_TEST: ${FORCE_TEST}
-    volumes:
-    - $CONFIG_LOCATION/healthcheck:/tmp/
-    
-  nas-health-status-replica:
-    image: dantebarba/whatsmyhealth
-    container_name: nas-health-status-replica
-    restart: unless-stopped
-    environment:
-      CHECK_URL: ${CHECK_URL}
-      TZ: ${DOCKER_TZ}
-      CRON: ${HEALTHCHECK_CRON_REPLICA}
       LOG_LEVEL: ${LOG_LEVEL}
       FORCE_TEST: ${FORCE_TEST}
     volumes:
